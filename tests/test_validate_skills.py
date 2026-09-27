@@ -71,5 +71,34 @@ class RepoSkillsTest(unittest.TestCase):
             self.assertIn("rules.md", body, f"{name}: SKILL.md must tell the agent to read rules.md")
 
 
+class PluginPackagingTest(unittest.TestCase):
+    SKILLS = ("inicio", "revisao", "leitor-beta", "pesquisa")
+
+    def test_plugin_manifest(self):
+        import json
+        manifest = json.loads((ROOT / ".claude-plugin" / "plugin.json").read_text(encoding="utf-8"))
+        self.assertEqual(manifest.get("name"), "livro")
+
+    def test_marketplace_points_to_repo_root(self):
+        import json
+        market = json.loads(
+            (ROOT / ".claude-plugin" / "marketplace.json").read_text(encoding="utf-8")
+        )
+        self.assertTrue(market.get("name"))
+        self.assertTrue(market.get("owner", {}).get("name"))
+        plugins = {p.get("name"): p for p in market.get("plugins", [])}
+        self.assertIn("livro", plugins)
+        self.assertIn(plugins["livro"].get("source"), ("./", "."))
+
+    def test_each_skill_has_help_and_argument_hint(self):
+        for name in self.SKILLS:
+            skill_dir = ROOT / "skills" / name
+            self.assertTrue((skill_dir / "references" / "ajuda.md").is_file(), name)
+            text = (skill_dir / "SKILL.md").read_text(encoding="utf-8")
+            frontmatter = text.split("---", 2)[1]
+            self.assertIn("argument-hint:", frontmatter, name)
+            self.assertIn("references/ajuda.md", text, name)
+
+
 if __name__ == "__main__":
     unittest.main()
