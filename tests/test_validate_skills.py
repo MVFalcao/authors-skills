@@ -51,7 +51,7 @@ class ValidateSkillTest(unittest.TestCase):
 
 
 class RepoSkillsTest(unittest.TestCase):
-    EXPECTED = {"grammar-review", "beta-reader", "writer-research", "book-orchestrator"}
+    EXPECTED = {"revisao", "leitor-beta", "pesquisa", "inicio"}
 
     def test_all_writer_skills_exist_and_are_valid(self):
         results = validate_all(ROOT / "skills")

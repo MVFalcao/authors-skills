@@ -1,5 +1,5 @@
 ---
-name: book-orchestrator
+name: inicio
 description: >-
   Organize a ajuda para um livro em PT-BR: inicialize o projeto, mantenha a
   memória da história, encaminhe pedidos de revisão, opinião ou pesquisa e
@@ -78,5 +78,5 @@ Final coordinated summary:
 ```
 
 An example coordinated request is “pesquise o cenário e depois avalie a cena”:
-route research first, then beta-reader. A request asking only to normalize
-spelling goes directly to grammar-review.
+route research first, then leitor-beta. A request asking only to normalize
+spelling goes directly to revisao.

@@ -1,4 +1,4 @@
-# Rules: writer-research
+# Rules: pesquisa
 
 > **Editable rules.** The skill reads this file first, and it overrides the defaults in SKILL.md.
 > These are starting assumptions: add, change or delete rules freely. One rule per bullet.

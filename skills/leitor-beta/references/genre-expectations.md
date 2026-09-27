@@ -36,7 +36,7 @@ scene from being understood, while allowing deliberate strangeness.
 ## Ficção histórica
 
 Track the relationship between period detail and character action. Flag a
-possible anachronism only as a question for writer-research; do not claim a
+possible anachronism only as a question for pesquisa; do not claim a
 historical fact without a source. Notice whether the setting affects choices,
 work, language, and social risk rather than serving as decoration.
 

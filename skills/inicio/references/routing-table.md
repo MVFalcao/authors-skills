@@ -6,18 +6,18 @@ selected leaf skill.
 
 | Signal in the request | Route | Handoff |
 |---|---|---|
-| erro, ortografia, pontuação, concordância, revisar português | grammar-review | one chapter or excerpt; author decisions |
-| prende, funciona, emoção, ritmo, o que achou, leitor | beta-reader | one passage; persona and reader profile |
-| nome, lugar, época, cotidiano, profissão, fonte, como era | writer-research | location, period, social context, source need |
+| erro, ortografia, pontuação, concordância, revisar português | revisao | one chapter or excerpt; author decisions |
+| prende, funciona, emoção, ritmo, o que achou, leitor | leitor-beta | one passage; persona and reader profile |
+| nome, lugar, época, cotidiano, profissão, fonte, como era | pesquisa | location, period, social context, source need |
 | “e depois”, “também”, or two clear outcomes | requested leaf stages in research → grammar → beta order | preserve each report and caveat |
-| pedido de revisão com capítulo ou trecho definido, como “revisa o capítulo 1” | grammar-review | one chapter or excerpt; author decisions |
+| pedido de revisão com capítulo ou trecho definido, como “revisa o capítulo 1” | revisao | one chapter or excerpt; author decisions |
 | pedido genérico de melhoria, como “melhora o capítulo” | one question | offer revisão gramatical or opinião |
 | pedido genérico de ajuda, reescrever, or unclear “revisa” | one question | offer revisão, opinião, or pesquisa |
 
-Do not route a factual uncertainty to beta-reader merely because it appears in
-a chapter. Do not route a request for reader reaction to grammar-review merely
+Do not route a factual uncertainty to leitor-beta merely because it appears in
+a chapter. Do not route a request for reader reaction to revisao merely
 because the prose contains errors. If a request names a previous book, pass it
-to beta-reader only for comparison or to writer-research only for factual
+to leitor-beta only for comparison or to pesquisa only for factual
 source work; never invent its contents.
 
 For a combined request, confirm which outputs are wanted when the wording does

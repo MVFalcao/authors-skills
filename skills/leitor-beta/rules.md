@@ -1,4 +1,4 @@
-# Rules: beta-reader
+# Rules: leitor-beta
 
 > **Editable rules.** The skill reads this file first, and it overrides the defaults in SKILL.md.
 > These are starting assumptions: add, change or delete rules freely. One rule per bullet.
@@ -12,7 +12,7 @@
 ## Scope
 - React only to what was read. Don't guess or spoil future chapters.
 - Don't rewrite the author's prose. At most one short illustrative line per concern, clearly marked as an example.
-- Grammar issues: mention them in one line at most and suggest grammar-review.
+- Grammar issues: mention them in one line at most and suggest revisao.
 - Sensitive content (violence, abuse, etc.): note how a reader may react. Don't censor or moralize.
 
 ## References
@@ -38,4 +38,4 @@ The persona changes **how** the opinion is delivered, never **what** is true abo
 
 ## Manuscript files
 - Read only the file the writer names, or text they paste. If neither is given, ask for the file name. Never guess which file a chapter is.
-- Supported formats: `.docx`, `.odt`, `.txt`, read with book-orchestrator's `scripts/extract_text.py`. For other formats, ask the writer to save the chapter as `.docx`.
+- Supported formats: `.docx`, `.odt`, `.txt`, read with the `inicio` skill's `scripts/extract_text.py`. For other formats, ask the writer to save the chapter as `.docx`.

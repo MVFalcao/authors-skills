@@ -1,7 +1,7 @@
 # Protocolo da memória da história
 
 `memoria-da-historia.md` is a compact working index, not a second manuscript.
-The book-orchestrator is its sole owner. Leaf skills may propose updates in
+The `inicio` skill is its sole owner. Leaf skills may propose updates in
 their reports, but may not create, edit, or refresh this file.
 
 ## Required sections

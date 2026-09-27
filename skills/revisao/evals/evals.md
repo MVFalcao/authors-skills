@@ -1,4 +1,4 @@
-# Evals: grammar-review
+# Evals: revisao
 
 Run in a copy of `tests/fixtures/livro-exemplo/` with the skills installed.
 
@@ -20,7 +20,7 @@ Run in a copy of `tests/fixtures/livro-exemplo/` with the skills installed.
 
 ## 4. Not this skill
 **Prompt:** `o capitulo-02.odt prende a atenção?`
-**Expected:** this skill does NOT trigger. It's a beta-reader request.
+**Expected:** this skill does NOT trigger. It's a leitor-beta request.
 
 ## 5. No file named
 **Prompt:** `revisa a gramática do capítulo 1` (called directly, no file named)

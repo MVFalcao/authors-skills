@@ -1,4 +1,4 @@
-# Evals: beta-reader
+# Evals: leitor-beta
 
 ## 1. Opinion using theme and previous book
 **Prompt:** `lê o manuscrito/capitulo-02.odt como leitor beta e me diz o que achou`
@@ -10,7 +10,7 @@
 
 ## 2. Persona crítico
 **Prompt:** `lê o capitulo-01.docx como um leitor crítico` (persona **crítico**)
-**Expected:** a more demanding tone. Points out the rushed pacing and the "barco" repetition as a reading problem. Grammar errors are only mentioned, with a suggestion to run grammar-review.
+**Expected:** a more demanding tone. Points out the rushed pacing and the "barco" repetition as a reading problem. Grammar errors are only mentioned, with a suggestion to run revisao.
 
 ## 3. Missing context
 **Prompt (in a folder without projeto-livro.md):** `o que você acha desse capítulo?` + pasted text

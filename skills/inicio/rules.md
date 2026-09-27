@@ -1,4 +1,4 @@
-# Rules: book-orchestrator
+# Rules: inicio
 
 > **Editable rules.** The skill reads this file first, and it overrides the defaults in SKILL.md.
 > These are starting assumptions: add, change or delete rules freely. One rule per bullet.
@@ -16,7 +16,7 @@
 ## Routing
 - Send the work to the right skill. **Never do the leaf skill's job itself.**
 - Ambiguous request: ask **one** short question with the options (revisão, opinião, pesquisa). Never more than one question before acting.
-- Combined requests run in this order: writer-research → grammar-review → beta-reader.
+- Combined requests run in this order: pesquisa → revisao → leitor-beta.
 - "Melhora / reescreve o capítulo": don't rewrite. Offer revisão or opinião instead.
 
 ## Files

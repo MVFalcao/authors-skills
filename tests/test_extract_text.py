@@ -6,7 +6,7 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-SCRIPT = ROOT / "skills" / "book-orchestrator" / "scripts" / "extract_text.py"
+SCRIPT = ROOT / "skills" / "inicio" / "scripts" / "extract_text.py"
 sys.path.insert(0, str(SCRIPT.parent))
 
 from extract_text import extract_text  # noqa: E402

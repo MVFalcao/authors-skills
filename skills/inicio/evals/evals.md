@@ -1,14 +1,14 @@
-# Evals: book-orchestrator (routing)
+# Evals: inicio (routing)
 
 | # | Prompt | Expected route |
 |---|---|---|
-| 1 | `revisa o manuscrito/capitulo-01.docx` | grammar-review |
-| 2 | `tem erro de português aqui?` + text | grammar-review |
-| 3 | `o que você achou do capitulo-02.odt?` | beta-reader |
-| 4 | `esse começo prende o leitor?` | beta-reader |
-| 5 | `me ajuda com nome pra uma personagem cigana do século XIX` | writer-research |
-| 6 | `como é o clima em Ouro Preto em julho?` | writer-research |
-| 7 | `revisa o capitulo-01.docx e me diz o que achou` | grammar-review → beta-reader (in sequence, one combined summary) |
+| 1 | `revisa o manuscrito/capitulo-01.docx` | revisao |
+| 2 | `tem erro de português aqui?` + text | revisao |
+| 3 | `o que você achou do capitulo-02.odt?` | leitor-beta |
+| 4 | `esse começo prende o leitor?` | leitor-beta |
+| 5 | `me ajuda com nome pra uma personagem cigana do século XIX` | pesquisa |
+| 6 | `como é o clima em Ouro Preto em julho?` | pesquisa |
+| 7 | `revisa o capitulo-01.docx e me diz o que achou` | revisao → leitor-beta (in sequence, one combined summary) |
 | 8 | `me ajuda com o capitulo-02.odt` | **ambiguous**: asks ONE short question (revisão, opinião ou pesquisa?) |
 | 9 | `melhora o capitulo-01.docx` | **ambiguous**: asks whether it's revisão gramatical or opinião; does not rewrite |
 
@@ -29,7 +29,7 @@ Use a copy of `tests/fixtures/livro-exemplo/` (it includes `memoria-da-historia.
 
 ### M3. Author decisions are respected
 **Prompt:** `revisa o capitulo-01.docx`
-**Expected:** grammar-review does not report Seu Tonho's line as **erro**, because it is listed under "Decisões do autor". It may leave it out or mention it as an accepted choice.
+**Expected:** revisao does not report Seu Tonho's line as **erro**, because it is listed under "Decisões do autor". It may leave it out or mention it as an accepted choice.
 
 ### M4. First use asks before creating the file
 **Prompt (folder without memoria-da-historia.md):** `revisa o capitulo-01.docx`

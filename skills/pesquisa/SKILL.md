@@ -1,5 +1,5 @@
 ---
-name: writer-research
+name: pesquisa
 description: >-
   Faça pesquisa para escritores em PT-BR sobre nomes, lugares, épocas,
   profissões, detalhes técnicos ou livros de referência quando o escritor
@@ -16,7 +16,7 @@ Follow this workflow and keep every writer-facing reply in PT-BR.
 2. Before opening any chapter, read `projeto-livro.md` and
    `memoria-da-historia.md` when they exist. Use the memory to keep names,
    dates, places, and established decisions consistent. Do not create or
-   refresh shared memory; return proposed additions to the book-orchestrator.
+   refresh shared memory; return proposed additions to the `inicio` skill.
 3. Classify the request as names, a real place, a period, a profession or
    technical detail, or a reference book. Establish location, era, social
    context, and the writer's intended use before collecting evidence. If a
@@ -82,4 +82,4 @@ and, when applicable, `## Opções ou detalhes aplicáveis`; retain source and f
 rationale. For a pure name request, replace irrelevant sensory headings with a
 short `Não se aplica` note. An example is
 “sugira nomes para uma cooperativa inventada em uma região montanhosa”; a
-request to decide whether a paragraph is compelling belongs to beta-reader.
+request to decide whether a paragraph is compelling belongs to leitor-beta.

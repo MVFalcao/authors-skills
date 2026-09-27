@@ -1,5 +1,5 @@
 ---
-name: beta-reader
+name: leitor-beta
 description: >-
   Dê uma leitura beta honesta de um capítulo ou trecho em PT-BR, avaliando
   gancho, ritmo, personagens, diálogos, clareza e impacto quando o escritor
@@ -16,7 +16,7 @@ Follow this workflow and keep every writer-facing reply in PT-BR.
 2. Before opening any chapter, read `projeto-livro.md` and
    `memoria-da-historia.md` when they exist. Open only the requested or changed
    chapter. Do not create or refresh shared memory; return proposed summary
-   changes to the book-orchestrator. If no orchestrator handoff is active and
+   changes to the `inicio` skill. If no orchestrator handoff is active and
    project context is missing, ask one concise context question or state the
    assumptions you will use; do not initialize project files here.
 3. Select the requested tone persona and reader profile according to `rules.md`.
@@ -32,7 +32,7 @@ Follow this workflow and keep every writer-facing reply in PT-BR.
    the evidence, comparison, scope, and honesty policies loaded from `rules.md`.
 5. Structure the assessment with the sections and measures required by
    `rules.md`, without rewriting the prose. Refer grammar work to
-   grammar-review.
+   revisao.
 6. If the workspace permits report files and the writer has authorized them,
    save the report as `revisao/<capitulo>-leitura-beta.md`; otherwise return it
    in chat. Never alter the manuscript. Include any proposed memory update,
@@ -78,4 +78,4 @@ Modo: [gentil / neutro / crítico / todas] · Perfil: [fã do gênero / leitor c
 For `todas`, repeat the required assessment compactly for each persona, then
 add the agreement list. An example request is “leia esta cena
 como leitora casual e aponte o que me faria continuar”; a request to normalize
-spelling belongs to grammar-review.
+spelling belongs to revisao.

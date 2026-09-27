@@ -1,5 +1,7 @@
 # PLAN: writer skills (brief for the develop run)
 
+> **Skill folders were renamed on 2026-09-27** (see "Plugin `livro`" below): book-orchestrator → `inicio`, grammar-review → `revisao`, beta-reader → `leitor-beta`, writer-research → `pesquisa`. Older sections still use the old names; read them with this mapping.
+
 Spec sources (do NOT modify): `AGENTS.md`, `tests/`, `skills/*/evals/evals.md`, `skills/*/rules.md`, `tests/fixtures/`.
 
 ## Deliverables

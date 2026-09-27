@@ -1,5 +1,5 @@
 ---
-name: grammar-review
+name: revisao
 description: >-
   Faça revisão gramatical de prosa em PT-BR, capítulo a capítulo, quando o
   escritor pedir correção, revisão de português, ortografia ou pontuação; não
@@ -15,7 +15,7 @@ Follow this workflow and keep every writer-facing reply in PT-BR.
 2. Before opening any chapter, read `projeto-livro.md` and
    `memoria-da-historia.md` when they exist. Compare the chapter's current
    size with the memory control table. Do not create or refresh shared memory;
-   return proposed summary changes to the book-orchestrator. If the memory
+   return proposed summary changes to the `inicio` skill. If the memory
    file is absent, tell the orchestrator that its first-use consent flow is
    required.
 3. Select the requested chapter or excerpt, read the complete passage needed
@@ -54,4 +54,4 @@ Escopo: [arquivo/parte lida]
 
 Use an empty table with `Nenhum achado nesta parte.` when there are no
 findings. A request such as “verifique a concordância deste parágrafo” belongs
-here; a request about whether a scene holds attention belongs to beta-reader.
+here; a request about whether a scene holds attention belongs to leitor-beta.

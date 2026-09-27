@@ -1,4 +1,4 @@
-# Evals: writer-research
+# Evals: pesquisa
 
 ## 1. Names for a place and era
 **Prompt:** `preciso de nomes para moradores de uma vila de pescadores no litoral da Bahia nos anos 1950`
