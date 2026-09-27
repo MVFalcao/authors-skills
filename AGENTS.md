@@ -82,17 +82,25 @@ description: >-
 
    In Claude Code, use the project skills that wrap these commands: **`develop`**, **`qa-review`** and **`search`** (in `.claude/skills/`).
    Small edits (a typo, one line in a `SKILL.md`, a frontmatter tweak) can be done directly. If Octopus isn't installed (for example in a non-Claude agent), say so and use that agent's equivalent tools.
-1. **Read before writing.** Read the relevant `SKILL.md` and neighbouring skills before changing or adding one, and match their structure and tone.
-2. **Stay in scope.** Change only what the task asks for. Don't rename, reorganise, or "improve" unrelated skills.
-3. **One skill per change.** Keep commits and PRs focused on a single skill where possible.
-4. **Test it.** After creating or editing a skill:
+   **Octopus prompt size:** keep the prompt short. Put the details in a committed brief (`PLAN.md`) and point to it with `plan:PLAN.md`.
+1. **Write prompts with `prompt-master`.** Use the user-level skill `prompt-master` (`~/.claude/skills/prompt-master`) in two places:
+   - **Every Octopus prompt** (develop, review, research, discover): run it through `prompt-master` with the target set to the Octopus workflow's agents (Claude Code / Codex). Use Template M, kept short: objective, pointer to `PLAN.md`, scope (files to touch and files not to touch), "done when" checks and stop conditions. Save the final prompt in `PLAN.md` or the run log so it can be reused.
+   - **The user's requests:** for any non-trivial request, rewrite it into a precise task (objective, scope, done when) and **show it to the user before starting**. Start after they confirm or adjust it. Skip this for small, clear requests (a typo, a question, a one-line change).
+2. **Use `caveman` for code tasks.** For all coding work in this repo (implementing, debugging, reviewing, running Octopus, tests, git), turn on the user-level skill `caveman` (`~/.claude/skills/caveman`, level **full**) for replies in the chat.
+   - **Stays in normal prose** (the skill's own boundary): code, comments, commit messages, docs, `SKILL.md` / `rules.md` / `README.md` content, prompts sent to Octopus or other agents, and memory files.
+   - **Never caveman:** anything a writer sees, meaning all skill output and PT-BR text. The writer skills must stay clear, full PT-BR.
+   - **Switch back to normal prose** for security warnings, irreversible actions, plans shown for approval, and whenever the user asks a question about the plan or is confused. Turn it off with "stop caveman" / "normal mode".
+3. **Read before writing.** Read the relevant `SKILL.md` and neighbouring skills before changing or adding one, and match their structure and tone.
+4. **Stay in scope.** Change only what the task asks for. Don't rename, reorganise, or "improve" unrelated skills.
+5. **One skill per change.** Keep commits and PRs focused on a single skill where possible.
+6. **Test it.** After creating or editing a skill:
    - check that the frontmatter parses and `name` matches the folder;
    - run every script you touched at least once;
    - try the skill on 2–3 realistic prompts (store them in `evals/` if they're useful again) and check that it triggers and gives the expected output.
-5. **Update the index.** When you add, rename, or remove a skill, update the table in `README.md`.
-6. **Report honestly.** Say what you tested and what you didn't. If something failed, show the output.
-7. **Ask when it's unclear.** If a request could mean two different skills or behaviours, ask before building.
-8. **Git.** Don't commit or push unless asked. Use short imperative commit messages scoped to the skill, e.g. `manuscript-editor: add dialogue checks`.
+7. **Update the index.** When you add, rename, or remove a skill, update the table in `README.md`.
+8. **Report honestly.** Say what you tested and what you didn't. If something failed, show the output.
+9. **Ask when it's unclear.** If a request could mean two different skills or behaviours, ask before building.
+10. **Git.** Don't commit or push unless asked. Use short imperative commit messages scoped to the skill, e.g. `manuscript-editor: add dialogue checks`.
 
 ## Definition of done
 

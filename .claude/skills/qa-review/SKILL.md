@@ -56,7 +56,7 @@ Then check by reading:
 test -x "$OCTO/scripts/orchestrate.sh" && echo "octo:ok" || echo "octo:missing"
 ```
 
-If Octopus is available, read `$OCTO/commands/review.md` and follow it for the
+Write the review prompt with the `prompt-master` skill first (target: review agents; name the target files, what to check, and the output format). Then, if Octopus is available, read `$OCTO/commands/review.md` and follow it for the
 target from step 1. It runs `orchestrate.sh code-review` across the available
 providers. Don't call `/octo:review` with the Skill tool; follow the file.
 If it's missing, say so, give only the checklist results and suggest

@@ -27,7 +27,11 @@ test -x "$OCTO/scripts/orchestrate.sh" && echo "octo:ok" || echo "octo:missing"
 - Perplexity calls cost money on the user's key. For an `exhaustive` run,
   mention that before starting.
 
-## 2. Pick the mode
+## 2. Write the query with `prompt-master`
+
+Run the question through the `prompt-master` skill (target: Perplexity / research agents): a precise question, the scope (period, place, sources wanted), the output format, and "cite sources, mark uncertain facts". Use the result as the query below.
+
+## 3. Pick the mode
 
 | Request | Mode |
 |---|---|
@@ -58,7 +62,7 @@ Don't call `/octo:research` with the Skill tool; follow the file.
 Read `$OCTO/commands/discover.md` and follow it (`orchestrate.sh probe`).
 Perplexity isn't useful here because it can't see local files.
 
-## 3. Answer
+## 4. Answer
 
 - Lead with the direct answer in one to three sentences.
 - Follow with key findings as bullets, each with its source link. Perplexity

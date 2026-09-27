@@ -34,10 +34,11 @@ version). Call it as `$OCTO` below.
    ```
    If it reports `octo:missing`, stop and tell the user to install or repair the
    plugin (`/octo:setup`). Don't quietly fall back to building it by hand.
-4. **Run the develop workflow.** Read `$OCTO/commands/develop.md` and follow it
+4. **Write the prompt with `prompt-master`.** Invoke the `prompt-master` skill (target: Claude Code / Codex agents, Template M) to turn the task into a short prompt: objective, `plan:PLAN.md` pointer, scope (files to touch and not touch), "done when" checks, stop conditions. Put the details in `PLAN.md`, not in the prompt.
+5. **Run the develop workflow.** Read `$OCTO/commands/develop.md` and follow it
    exactly. It runs `orchestrate.sh develop` through Bash with its quality gates.
-   Put the project constraints into the prompt you pass to it so the providers
-   see them:
+   Pass only the short prompt from step 4. The project constraints live in
+   `PLAN.md`, which the prompt points to. Make sure it covers:
    - the target path (e.g. `skills/<name>/`)
    - the SKILL.md frontmatter rules (`name` matches the folder; `description`
      says what and when)
@@ -46,12 +47,12 @@ version). Call it as `$OCTO` below.
    - keep `SKILL.md` under ~500 lines and move long material into `references/`
    Don't invoke `/octo:develop` with the Skill tool. It's a user-only command,
    so read the file and follow it as the command says.
-5. **Verify.** When Octopus finishes, check its output against the project's
+6. **Verify.** When Octopus finishes, check its output against the project's
    "Definition of done" in `AGENTS.md`:
    - frontmatter parses and `name` matches the folder
    - every script that was added or changed runs once without errors
    - `README.md` skill index updated if a skill was added, renamed or removed
-6. **Hand off to QA.** For anything more than a small change, finish by running
+7. **Hand off to QA.** For anything more than a small change, finish by running
    the `qa-review` skill on the changed files.
 
 ## Report back
