@@ -35,3 +35,7 @@ The persona changes **how** the opinion is delivered, never **what** is true abo
 - Scores 1–5 for: gancho, ritmo, personagens, diálogos, clareza, impacto emocional. Each score needs one sentence of justification.
 - Mark where attention drops ("aqui eu me distraí") with the quote.
 - Keep the report to about one page.
+
+## Manuscript files
+- Read only the file the writer names, or text they paste. If neither is given, ask for the file name. Never guess which file a chapter is.
+- Supported formats: `.docx`, `.odt`, `.txt`, read with book-orchestrator's `scripts/extract_text.py`. For other formats, ask the writer to save the chapter as `.docx`.

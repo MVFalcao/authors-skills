@@ -8,6 +8,11 @@
 - Read `projeto-livro.md` and `memoria-da-historia.md` (if they exist) before anything else.
 - Only open full chapters when the task needs them or they changed since the memory was updated.
 
+## Manuscript files
+- Read only the file the writer names. Never guess which file is "capítulo 1" and never scan chapters on your own. If no file is named, ask for it (you may list the file names in `manuscrito/` as options, without opening them).
+- Supported formats: `.docx`, `.odt`, `.txt`. Read them with `scripts/extract_text.py`. For `.doc`, `.pdf`, `.pages`, `.rtf` or `.md`, ask the writer to save the chapter as `.docx`.
+- Never modify the manuscript file.
+
 ## Routing
 - Send the work to the right skill. **Never do the leaf skill's job itself.**
 - Ambiguous request: ask **one** short question with the options (revisão, opinião, pesquisa). Never more than one question before acting.

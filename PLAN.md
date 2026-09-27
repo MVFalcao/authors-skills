@@ -21,7 +21,7 @@ Spec sources (do NOT modify): `AGENTS.md`, `tests/`, `skills/*/evals/evals.md`, 
   ```
   <livro>/
   ├── projeto-livro.md      # title, genre, theme, audience, POV/tense, manuscript path, previous books (links/folders)
-  ├── manuscrito/           # chapters (.md/.txt/.docx), path configurable in projeto-livro.md
+  ├── manuscrito/           # chapters (.docx/.odt/.txt), path configurable in projeto-livro.md
   ├── revisao/              # reports: <capitulo>-gramatica.md, <capitulo>-leitura-beta.md
   └── pesquisa/             # research notes: nomes-*.md, lugar-*.md, tema-*.md
   ```
@@ -86,3 +86,11 @@ Also: a root `README.md` in PT-BR with an overview, installation steps and a ski
   - `copilot`: `.github/skills` (project only; `--global` is an error)
   - `all`: `claude` + `agents`
 - Backups go to a `skills-backup/` sibling of each target `skills/` dir. Keep the existing safety checks.
+
+## Manuscript files: named, word-processor formats (requested 2026-09-27)
+- Skills read **only the file the writer names** (or pasted text). No guessing which file is "capítulo 1", no scanning of `manuscrito/`. No file named: ask one short question; listing file names as options is fine, opening them is not.
+- Formats: `.docx`, `.odt`, `.txt`. `.doc`, `.pdf`, `.pages`, `.rtf`, `.md`: ask the writer to save as `.docx`.
+- `skills/book-orchestrator/scripts/extract_text.py` (stdlib only): `extract_text(path) -> str`, CLI `extract_text.py <file>` prints plain text. Paragraphs separated by a blank line; Word runs joined without extra spaces; tabs and line breaks kept; ODF `text:s` expanded. Rejects DOCTYPE/entities and caps the uncompressed XML size. Clean one-line errors, non-zero exit, no tracebacks.
+- grammar-review and beta-reader follow the same rule when called directly and use the orchestrator's script (`../book-orchestrator/scripts/extract_text.py` once installed).
+- Never modify the manuscript file. Reports stay `.md` and keep the chapter's base name.
+- Spec: `tests/test_extract_text.py`, fixtures `capitulo-01.docx` / `capitulo-02.odt` (rebuilt by `tests/fixtures/make_manuscripts.py`), evals F1–F3 (orchestrator), grammar-review 5–6, beta-reader 8.

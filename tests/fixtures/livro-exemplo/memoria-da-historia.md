@@ -5,8 +5,8 @@
 ## Controle de atualização
 | capítulo | última atualização | tamanho (bytes) |
 |---|---|---|
-| manuscrito/capitulo-01.md | 2026-09-20 | 708 |
-| manuscrito/capitulo-02.md | 2026-09-20 | 940 |
+| manuscrito/capitulo-01.docx | 2026-09-20 | 1377 |
+| manuscrito/capitulo-02.odt | 2026-09-20 | 1200 |
 
 ## Resumo por capítulo
 - **Cap. 1 — A volta:** Marina vai à praia antes do amanhecer e vê os pescadores voltarem; o barco do pai quase vira. Seu Tonho anuncia a pesca do dia seguinte. Começa a chover e Marina continua olhando o mar.
