@@ -105,6 +105,7 @@ Also: a root `README.md` in PT-BR with an overview, installation steps and a ski
   | beta-reader | leitor-beta | `/livro:leitor-beta` |
   | writer-research | pesquisa | `/livro:pesquisa` |
 - Each SKILL.md gets `argument-hint` in the frontmatter (e.g. leitor-beta: `[arquivo .docx/.odt/.txt] [gentil|neutro|crítico|todas]`).
+- Verified 2026-09-27 (Perplexity, code.claude.com/docs/en/plugins, /skills, /plugin-marketplaces): plugin skills are `/<plugin>:<name>`; `argument-hint` works in SKILL.md; text after the command arrives as `$ARGUMENTS` (`$0`, `$1` positional). Minimal manifests: `plugin.json` `{"name": "livro"}`; `marketplace.json` `{"name": "<marketplace>", "owner": {"name": "<owner>"}, "plugins": [{"name": "livro", "source": "./"}]}`.
 - `scripts/install.sh` stays for other tools (no prefix there: `/revisao`, `$revisao` in Codex ⚠️ verificar). README explains both.
 
 ## Help mode (requested 2026-09-27)
