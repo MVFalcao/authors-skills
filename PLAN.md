@@ -1,10 +1,10 @@
 # PLAN: writer skills (brief for the develop run)
 
-Spec sources (do NOT modify): `AGENTS.md`, `tests/`, `skills/*/evals/evals.md`, `tests/fixtures/`.
+Spec sources (do NOT modify): `AGENTS.md`, `tests/`, `skills/*/evals/evals.md`, `skills/*/rules.md`, `tests/fixtures/`.
 
 ## Deliverables
 1. `scripts/validate_skills.py`: Python 3 stdlib only. `validate_skill(path) -> list[str]`, `validate_all(dir) -> dict[name, list[str]]`. Checks: frontmatter between `---` lines; `name` == folder; `description` present and <= 1024 chars; body <= 500 lines; every `references/...` path mentioned exists. CLI prints OK/FAIL per skill and exits 1 on failure. `python3 -m unittest discover tests` must pass.
-2. `scripts/install.sh <book-folder> | --global`: POSIX sh, `set -eu`. Copies `skills/*` (minus `evals/`) to `<book>/.claude/skills/` or `~/.claude/skills/`. If a skill already exists at the target, don't overwrite it silently: back it up (`<name>.bak-<timestamp>`) or require `--force`.
+2. `scripts/install.sh <book-folder> | --global`: done in run 1. Run 2 adds `--target` (see "Portability").
 3. Four skills: `grammar-review`, `beta-reader`, `writer-research`, `book-orchestrator` (details below).
 4. `README.md` in PT-BR: overview, installation, skill table with example requests.
 
@@ -26,7 +26,7 @@ Spec sources (do NOT modify): `AGENTS.md`, `tests/`, `skills/*/evals/evals.md`, 
   └── pesquisa/             # research notes: nomes-*.md, lugar-*.md, tema-*.md
   ```
 - **Voice and honesty:** never rewrite passages unless asked. Flag possible style choices instead of "fixing" them. Mark anything invented or unverified with `⚠️ verificar`.
-- **Installation:** the skills live in `skills/` in this repo. `scripts/install.sh <pasta-do-livro>` copies them to `<livro>/.claude/skills/`, or to `~/.claude/skills/` with `--global`.
+- **Installation:** the skills live in `skills/` in this repo. `scripts/install.sh <pasta-do-livro>` copies them to `<livro>/.claude/skills/`, or to `~/.claude/skills/` with `--global`. Backups of replaced skills go to `.claude/skills-backup/`, never inside `skills/`.
 
 ## Skills (`skills/<name>/`)
 
@@ -53,3 +53,36 @@ Spec sources (do NOT modify): `AGENTS.md`, `tests/`, `skills/*/evals/evals.md`, 
 
 Also: a root `README.md` in PT-BR with an overview, installation steps and a skill table.
 
+
+## Editable rules (`skills/<name>/rules.md`)
+- Every skill has a `rules.md` written by the author. **SKILL.md step 1 is always: "Read `rules.md`; it overrides the defaults below."**
+- SKILL.md must not copy the rules. It refers to them. The validator checks that `rules.md` exists when SKILL.md mentions it.
+
+## beta-reader personas
+- Tone personas **gentil**, **neutro** (default) and **crítico**, plus **todas** (all three side by side, then "onde as três concordam"). They combine with the reader profile (fã do gênero / leitor casual).
+- A persona changes the tone, never the honesty. The details are in `skills/beta-reader/rules.md` and evals 5–7.
+
+## Story memory (`memoria-da-historia.md`)
+- Goal: skills don't reread the whole manuscript every time.
+- book-orchestrator keeps `memoria-da-historia.md` in the book folder (asks the first time). Every skill reads it **before** any chapter and opens a chapter in full only when the task needs it or the chapter changed.
+- Sections (PT-BR, compact): controle de atualização (`capítulo | última atualização | tamanho (bytes)`), resumo por capítulo, personagens, lugares, linha do tempo, fios em aberto, tom e estilo, decisões do autor.
+- Staleness: compare each chapter's current size with the table; refresh only chapters that changed.
+- After grammar-review, beta-reader or writer-research runs, the orchestrator refreshes the relevant sections. Summaries only, never long passages. Inferred facts get `⚠️ verificar`. If summary and chapter disagree, the chapter wins.
+- grammar-review skips anything listed under "decisões do autor".
+- Sample: `tests/fixtures/livro-exemplo/memoria-da-historia.md`. Evals M1–M4 in `skills/book-orchestrator/evals/evals.md`.
+
+## Portability (tool-neutral skills)
+- SKILL.md bodies name **capabilities**, not tool names ("search the web", "fetch the link", "read the file", "save the report"). Fallbacks:
+  - no file access: return the report in the chat;
+  - no web access: say so and mark facts `⚠️ verificar`;
+  - no way to call another skill: the orchestrator tells the writer which skill to use next.
+- `install.sh --target <t>` (default `claude`), project dir / `--global` dir:
+  - `claude`: `.claude/skills` / `~/.claude/skills`
+  - `agents`: `.agents/skills` / `~/.agents/skills`
+  - `codex`: `.codex/skills` / `~/.codex/skills`
+  - `cursor`: `.cursor/skills` / `~/.cursor/skills`
+  - `gemini`: `.gemini/skills` / `~/.gemini/skills`
+  - `opencode`: `.opencode/skills` / `~/.config/opencode/skills`
+  - `copilot`: `.github/skills` (project only; `--global` is an error)
+  - `all`: `claude` + `agents`
+- Backups go to a `skills-backup/` sibling of each target `skills/` dir. Keep the existing safety checks.

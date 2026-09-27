@@ -289,6 +289,8 @@ def validate_skill(path: Union[str, Path]) -> list[str]:
         errors.append(f"body: exceeds {_MAX_BODY_LINES} lines")
 
     errors.extend(_reference_errors(text, skill_dir))
+    if "rules.md" in text and not (skill_dir / "rules.md").is_file():
+        errors.append("rules: SKILL.md mentions rules.md but the file is missing")
     return errors
 
 

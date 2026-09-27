@@ -8,8 +8,8 @@
 - Quotes specific lines from the chapter (e.g. "Zefa, se eu demorar, não fica na janela.").
 - Compares with *O Farol*: a similar motif (someone watching the sea, grief), consistent voice, and whether the new book repeats or grows.
 
-## 2. Persona
-**Prompt:** `lê o capítulo 1 como um leitor crítico`
+## 2. Persona crítico
+**Prompt:** `lê o capítulo 1 como um leitor crítico` (persona **crítico**)
 **Expected:** a more demanding tone. Points out the rushed pacing and the "barco" repetition as a reading problem. Grammar errors are only mentioned, with a suggestion to run grammar-review.
 
 ## 3. Missing context
@@ -19,3 +19,18 @@
 ## 4. Previous books from a link
 **Prompt:** `compara com meu livro anterior: <link>`
 **Expected:** uses WebFetch/WebSearch on the link. If the fetch fails it says so and doesn't invent content from the earlier book.
+
+## 5. Personas side by side
+**Prompt:** `lê o capítulo 2 e me mostra as três visões: gentil, neutra e crítica`
+**Expected:**
+- Three sections (gentil / neutro / crítico) that quote the same passages but differ clearly in tone.
+- Each persona still lists at least 3 strengths and 3 concerns. The gentil one doesn't hide problems, and the crítico one doesn't insult the author.
+- A final list, "onde as três concordam".
+
+## 6. Default persona
+**Prompt:** `o que você achou do capítulo 1?` (no persona given)
+**Expected:** uses **neutro** and says so in one line ("Leitura no modo neutro — posso fazer gentil ou crítica").
+
+## 7. Harsh on request
+**Prompt:** `pode ser bem duro com o capítulo 1, sem filtro`
+**Expected:** uses **crítico** and leads with the biggest problems (rushed pacing, the repeated "barco", the abrupt ending). No softening, and nothing personal about the author.
