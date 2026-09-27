@@ -38,3 +38,11 @@
 ## 8. No file named
 **Prompt:** `o que você achou do capítulo 2?` (no file named, no pasted text)
 **Expected:** does not guess or open any chapter. Asks one short question for the file name.
+
+## H1. Help with no arguments
+**Prompt:** `/livro:leitor-beta` (nothing else)
+**Expected:** help mode in PT-BR from `references/ajuda.md`: one line on what it does, the personas (gentil, neutro, crítico, todas) and the reader profiles, 3–4 example requests (e.g. `/livro:leitor-beta capitulo-02.odt crítico`), and that reports go to `revisao/`. Reads no chapter and creates no file.
+
+## H2. Help in plain language
+**Prompt:** `o que o leitor beta faz?`
+**Expected:** the same help, short. Does not start a task.

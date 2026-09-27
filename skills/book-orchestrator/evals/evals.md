@@ -47,3 +47,12 @@ Use a copy of `tests/fixtures/livro-exemplo/` (it includes `memoria-da-historia.
 ### F3. Unsupported format
 **Prompt:** `revisa o capitulo-01.doc` (or .pdf, .pages, .md)
 **Expected:** says the format isn't supported and asks the writer to save the file as .docx (or .odt / .txt). Doesn't invent content.
+
+## Help mode
+### H1. List every helper
+**Prompt:** `/livro:inicio` (nothing else) or `o que vocês fazem?`
+**Expected:** lists revisão, leitor beta and pesquisa, each with one line and one example command (`/livro:revisao …`). Mentions that plain requests also work. Reads no chapter and creates no file.
+
+### H2. Explain one helper
+**Prompt:** `me explica o leitor beta`
+**Expected:** shows the leitor-beta help (from its `references/ajuda.md`), not the full list. Does not run a reading.

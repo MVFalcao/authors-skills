@@ -94,3 +94,21 @@ Also: a root `README.md` in PT-BR with an overview, installation steps and a ski
 - grammar-review and beta-reader follow the same rule when called directly and use the orchestrator's script (`../book-orchestrator/scripts/extract_text.py` once installed).
 - Never modify the manuscript file. Reports stay `.md` and keep the chapter's base name.
 - Spec: `tests/test_extract_text.py`, fixtures `capitulo-01.docx` / `capitulo-02.odt` (rebuilt by `tests/fixtures/make_manuscripts.py`), evals F1–F3 (orchestrator), grammar-review 5–6, beta-reader 8.
+
+## Plugin `livro` with PT-BR commands (requested 2026-09-27)
+- The repo becomes a Claude Code plugin named `livro`, like Octopus (`octo`): `.claude-plugin/plugin.json` + `.claude-plugin/marketplace.json`. Install: `/plugin marketplace add <repo>` then `/plugin install livro@<marketplace>`.
+- Skill folders are renamed (after run 2), and each command is `/livro:<folder>`:
+  | old folder | new folder | command |
+  |---|---|---|
+  | book-orchestrator | inicio | `/livro:inicio` |
+  | grammar-review | revisao | `/livro:revisao` |
+  | beta-reader | leitor-beta | `/livro:leitor-beta` |
+  | writer-research | pesquisa | `/livro:pesquisa` |
+- Each SKILL.md gets `argument-hint` in the frontmatter (e.g. leitor-beta: `[arquivo .docx/.odt/.txt] [gentil|neutro|crítico|todas]`).
+- `scripts/install.sh` stays for other tools (no prefix there: `/revisao`, `$revisao` in Codex ⚠️ verificar). README explains both.
+
+## Help mode (requested 2026-09-27)
+- Each skill has `references/ajuda.md` in PT-BR, editable by the writer: one line on what it does, what it can do (options such as personas), 3–4 example requests to copy (with the `/livro:` command and in plain language), and where results are saved.
+- Help mode starts when the skill is called with no arguments (`/livro:leitor-beta`) or the writer asks what it does ("o que o leitor beta faz?", "ajuda", "como uso isso?"). It shows `references/ajuda.md`, adapted to the book if `projeto-livro.md` exists. It reads no chapter and creates no file.
+- `inicio`: "o que vocês fazem?" or `/livro:inicio` with no task lists every helper with one line and one example. "me explica o leitor beta" shows that skill's help.
+- Evals H1–H2 in each skill's evals.md.

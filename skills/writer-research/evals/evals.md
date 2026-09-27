@@ -15,3 +15,11 @@
 ## 4. Invented name
 **Prompt:** `cria um nome para uma cidade fictícia no sertão`
 **Expected:** 5+ options with the technique used (tupi roots, saint's name, geographic feature…). Checks and notes whether a real town already has that name.
+
+## H1. Help with no arguments
+**Prompt:** `/livro:pesquisa` (nothing else)
+**Expected:** help mode in PT-BR from `references/ajuda.md`: one line on what it does, the kinds of research (nomes, lugares, épocas, profissões, livros de referência), 3–4 example requests, the `⚠️ verificar` convention, and that notes go to `pesquisa/`. Reads no chapter and creates no file.
+
+## H2. Help in plain language
+**Prompt:** `o que dá pra pesquisar com você?`
+**Expected:** the same help, short. Does not start a task.

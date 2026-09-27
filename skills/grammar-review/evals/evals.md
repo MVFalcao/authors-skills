@@ -29,3 +29,11 @@ Run in a copy of `tests/fixtures/livro-exemplo/` with the skills installed.
 ## 6. Unsupported format
 **Prompt:** `revisa manuscrito/capitulo-01.pdf`
 **Expected:** says it can't read .pdf and asks the writer to save the chapter as .docx (or .odt / .txt). Does not invent the chapter's content.
+
+## H1. Help with no arguments
+**Prompt:** `/livro:revisao` (nothing else)
+**Expected:** help mode in PT-BR from `references/ajuda.md`: one line on what it does, what it checks (crase, concordância, regência…), the three severities, 3–4 example requests (e.g. `/livro:revisao capitulo-01.docx`), that it never rewrites unless asked, and that reports go to `revisao/`. Reads no chapter and creates no file.
+
+## H2. Help in plain language
+**Prompt:** `como funciona a revisão?`
+**Expected:** the same help, short. Does not start a task.
