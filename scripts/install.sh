@@ -187,7 +187,7 @@ cleanup() {
 
     if [ "$exit_status" -ne 0 ] && [ "$MUTATION_STARTED" -eq 1 ]; then
         printf '%s\n' \
-            'install.sh: warning: installation stopped partway; some skills may already be replaced (without --force, old copies are in skills-backup/). Re-run the same command to finish.' >&2
+            'install.sh: warning: installation stopped partway; folders may have been created and some skills may already be replaced (without --force, replaced skills are in skills-backup/). Re-run the same command to finish.' >&2
     fi
 
     exit "$exit_status"

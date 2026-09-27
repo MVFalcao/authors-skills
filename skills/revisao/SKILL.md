@@ -30,7 +30,9 @@ Follow this workflow and keep every writer-facing reply in PT-BR.
    `references/checklist-pt-br.md` while classifying findings.
 2. Before opening any chapter, read `projeto-livro.md` and
    `memoria-da-historia.md` when they exist. Compare the chapter's
-   fingerprint (`extract_text.py --fingerprint`) with the memory control table. Do not create or refresh shared memory;
+   fingerprint (`../inicio/scripts/extract_text.py --fingerprint <arquivo>`, a
+   path relative to this skill's own folder) with the memory control table. Do
+   not create or refresh shared memory;
    return proposed summary changes to the `inicio` skill. If the memory
    file is absent, tell the orchestrator that its first-use consent flow is
    required.

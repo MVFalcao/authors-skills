@@ -21,6 +21,9 @@ SUPPORTED = (".docx", ".odt", ".txt")
 # A chapter's XML is a few MB at most. The cap stops zip bombs from
 # exhausting memory before parsing starts.
 MAX_XML_BYTES = 50 * 1024 * 1024
+# Upper bound on the extracted text (a long novel is ~1-2 million chars).
+# Space-run elements can expand, so the output needs its own cap.
+MAX_TEXT_CHARS = 20_000_000
 
 W = "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}"
 TEXT = "{urn:oasis:names:tc:opendocument:xmlns:text:1.0}"
@@ -72,11 +75,15 @@ def _paragraphs(root, expand):
     paragraphs = []
     current = None
     outer = []
+    total = 0
     stack = [("enter", root)]
     while stack:
         kind, value = stack.pop()
         if kind == "text":
             if current is not None and value:
+                total += len(value)
+                if total > MAX_TEXT_CHARS:
+                    raise ExtractError("arquivo grande demais: o texto extraído passa do limite")
                 current.append(value)
         elif kind == "begin":
             outer.append(current)
@@ -124,8 +131,10 @@ def _odt_steps(elem):
         return [("text", "\t")]
     if tag == TEXT + "line-break":
         return [("text", "\n")]
-    if tag == TEXT + "note":
-        return []  # footnotes would land mid-text; leave them out entirely
+    if tag in (TEXT + "note", TEXT + "tracked-changes"):
+        # Footnotes would land mid-text, and tracked-changes holds text the
+        # author already deleted; leave both out entirely.
+        return []
     steps = [("text", elem.text or "")]
     for child in elem:
         steps.append(("enter", child))
