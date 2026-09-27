@@ -115,3 +115,18 @@ Also: a root `README.md` in PT-BR with an overview, installation steps and a ski
 - Help mode starts when the skill is called with no arguments (`/livro:leitor-beta`) or the writer asks what it does ("o que o leitor beta faz?", "ajuda", "como uso isso?"). It shows `references/ajuda.md`, adapted to the book if `projeto-livro.md` exists. It reads no chapter and creates no file.
 - `inicio`: "o que vocês fazem?" or `/livro:inicio` with no task lists every helper with one line and one example. "me explica o leitor beta" shows that skill's help.
 - Evals H1–H2 in each skill's evals.md.
+
+## README (run 3)
+Write `README.md` at the repo root, in clear PT-BR for writers (not developers). No caveman, no jargon. Sections:
+1. **O que é**: 3–4 lines. Four helpers for writing a book in Portuguese; they read the book folder and never change the manuscript.
+2. **Instalação**
+   - Claude Code (recommended): `/plugin marketplace add <dono>/authors-skills`, then `/plugin install livro@authors-skills`. Say `<dono>` is the GitHub owner once the repo is published.
+   - Other tools: `sh scripts/install.sh --target <alvo> <pasta-do-livro>` (or `--global`). Mention `--force` and that old copies go to `skills-backup/`.
+3. **Comandos**: table `comando | o que faz | exemplo`, for `/livro:inicio`, `/livro:revisao`, `/livro:leitor-beta`, `/livro:pesquisa`. A command with nothing after it shows help. Plain requests also work.
+4. **Formatos do manuscrito**: `.docx`, `.odt`, `.txt`; the writer names the file; other formats: save as `.docx`.
+5. **Pasta do livro**: the layout tree (projeto-livro.md, memoria-da-historia.md, manuscrito/, revisao/, pesquisa/). The first time, the helpers ask before creating anything.
+6. **Personalizar**: each skill's `rules.md` (edit freely; it overrides the defaults) and `references/ajuda.md` (help text).
+7. **Compatibilidade**: table `ferramenta | --target | comando | arquivos | web | orquestrador`, from "Portability" above. Claude Code: `/livro:<nome>` via plugin, `/<nome>` via install.sh. Codex: `$<nome>` or `/skills` (⚠️ verificar). Gemini, OpenCode, Copilot paths are ⚠️ verificar.
+8. **Para quem mantém o repositório**: one short paragraph pointing to `AGENTS.md`, `scripts/validate_skills.py`, and that tests live in `tests/` (not tracked in git).
+
+Rules: examples must not reuse text from `tests/fixtures/` or `skills/*/evals/`. Keep it under ~150 lines. Don't invent features that the skills don't have.
