@@ -67,8 +67,8 @@ Also: a root `README.md` in PT-BR with an overview, installation steps and a ski
 ## Story memory (`memoria-da-historia.md`)
 - Goal: skills don't reread the whole manuscript every time.
 - book-orchestrator keeps `memoria-da-historia.md` in the book folder (asks the first time). Every skill reads it **before** any chapter and opens a chapter in full only when the task needs it or the chapter changed.
-- Sections (PT-BR, compact): controle de atualização (`capítulo | última atualização | tamanho (bytes)`), resumo por capítulo, personagens, lugares, linha do tempo, fios em aberto, tom e estilo, decisões do autor.
-- Staleness: compare each chapter's current size with the table; refresh only chapters that changed.
+- Sections (PT-BR, compact): controle de atualização (`capítulo | última atualização | tamanho (bytes) | impressão digital`), resumo por capítulo, personagens, lugares, linha do tempo, fios em aberto, tom e estilo, decisões do autor.
+- Staleness: compare each chapter's size and fingerprint (`extract_text.py --fingerprint`: bytes + first 12 hex chars of sha256) with the table; refresh only chapters that changed.
 - After grammar-review, beta-reader or writer-research runs, the orchestrator refreshes the relevant sections. Summaries only, never long passages. Inferred facts get `⚠️ verificar`. If summary and chapter disagree, the chapter wins.
 - grammar-review skips anything listed under "decisões do autor".
 - Sample: `tests/fixtures/livro-exemplo/memoria-da-historia.md`. Evals M1–M4 in `skills/book-orchestrator/evals/evals.md`.

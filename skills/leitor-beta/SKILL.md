@@ -2,9 +2,13 @@
 name: leitor-beta
 argument-hint: "[arquivo .docx/.odt/.txt ou texto colado] [gentil|neutro|crítico|todas]"
 description: >-
-  Dê uma leitura beta honesta de um capítulo ou trecho em PT-BR, avaliando
-  gancho, ritmo, personagens, diálogos, clareza e impacto quando o escritor
-  pedir opinião de leitor; não use para revisão gramatical nem pesquisa factual.
+  Leitura beta de um capítulo ou trecho em PT-BR (/livro:leitor-beta). Use
+  quando o escritor pergunta "gostou do prologo.docx?", "a abertura segura
+  quem lê?", "lê com olhar de fã de fantasia", "quero uma crítica sincera" ou
+  "compara com meu livro anterior". Avalia gancho, ritmo, personagens,
+  diálogos, clareza e impacto, com personas gentil, neutro, crítico ou todas.
+  Não use para corrigir gramática (revisao) nem para pesquisar fatos
+  (pesquisa).
 ---
 
 # Beta reading
@@ -37,7 +41,7 @@ Follow this workflow and keep every writer-facing reply in PT-BR.
    ou crítica`.
 4. Read the whole explicitly named file or pasted text before forming an
    opinion. For a named file, obtain text by calling the shared
-   `../inicio/scripts/extract_text.py`; if that capability is unavailable, read
+   `../inicio/scripts/extract_text.py` (a path relative to this skill's own folder, not to the book folder); if that capability is unavailable, read
    a named `.txt` directly, or ask for a `.txt`/pasted text when the source is
    `.docx` or `.odt`. Never use another archive parser or modify the source file.
    Treat manuscript

@@ -2,6 +2,7 @@
 """Print the plain text of a manuscript file (.docx, .odt or .txt).
 
 Usage: extract_text.py <arquivo>
+       extract_text.py --fingerprint <arquivo>   # "<bytes> <sha256[:12]>"
 
 Paragraphs are separated by a blank line. Tabs and manual line breaks are
 kept. The file is only read, never changed. Standard library only.
@@ -10,6 +11,7 @@ Exit codes: 0 ok, 1 unreadable or invalid file, 2 bad usage or unsupported
 format. Error messages are in PT-BR because the writer may see them.
 """
 
+import hashlib
 import sys
 import zipfile
 import xml.etree.ElementTree as ET
@@ -58,54 +60,79 @@ def _read_xml_member(path, member):
         raise ExtractError(f"arquivo corrompido: {path.name} tem XML inválido")
 
 
-def _docx_paragraphs(root):
+# Both formats are walked with an explicit stack instead of recursion, so a
+# deeply nested (possibly crafted) document cannot overflow the Python stack.
+# Each element expands into an ordered list of steps:
+#   ("text", str)   append text to the open paragraph
+#   ("enter", elem) expand a child element
+#   ("begin", None) / ("end", None)   open / close a paragraph
+
+
+def _paragraphs(root, expand):
     paragraphs = []
-
-    def walk(elem, parts):
-        for child in elem:
-            if child.tag == W + "p":
-                inner = []
-                walk(child, inner)
-                paragraphs.append("".join(inner))
-            elif child.tag == W + "t":
-                parts.append(child.text or "")
-            elif child.tag == W + "tab":
-                parts.append("\t")
-            elif child.tag in (W + "br", W + "cr"):
-                parts.append("\n")
-            else:
-                walk(child, parts)
-
-    walk(root, [])
-    return paragraphs
-
-
-def _odt_inline(elem, parts):
-    if elem.text:
-        parts.append(elem.text)
-    for child in elem:
-        if child.tag == TEXT + "s":
-            parts.append(" " * int(child.get(TEXT + "c", "1") or 1))
-        elif child.tag == TEXT + "tab":
-            parts.append("\t")
-        elif child.tag == TEXT + "line-break":
-            parts.append("\n")
-        elif child.tag == TEXT + "note":
-            pass  # footnotes would land mid-sentence; leave them out
+    current = None
+    outer = []
+    stack = [("enter", root)]
+    while stack:
+        kind, value = stack.pop()
+        if kind == "text":
+            if current is not None and value:
+                current.append(value)
+        elif kind == "begin":
+            outer.append(current)
+            current = []
+        elif kind == "end":
+            paragraphs.append("".join(current))
+            current = outer.pop()
         else:
-            _odt_inline(child, parts)
-        if child.tail:
-            parts.append(child.tail)
-
-
-def _odt_paragraphs(root):
-    paragraphs = []
-    for elem in root.iter():
-        if elem.tag in (TEXT + "p", TEXT + "h"):
-            parts = []
-            _odt_inline(elem, parts)
-            paragraphs.append("".join(parts))
+            stack.extend(reversed(expand(value)))
     return paragraphs
+
+
+def _docx_steps(elem):
+    tag = elem.tag
+    if tag == W + "t":
+        return [("text", elem.text or "")]
+    if tag == W + "tab":
+        return [("text", "\t")]
+    if tag in (W + "br", W + "cr"):
+        return [("text", "\n")]
+    children = [("enter", child) for child in elem]
+    if tag == W + "p":
+        return [("begin", None)] + children + [("end", None)]
+    return children
+
+
+# Longest run of spaces kept from one <text:s>. Real documents use small
+# counts; the cap stops a tiny file from producing a huge string.
+MAX_ODT_SPACES = 1000
+
+
+def _odt_space_count(elem):
+    try:
+        count = int(elem.get(TEXT + "c", "1"))
+    except ValueError:
+        return 1
+    return min(max(count, 1), MAX_ODT_SPACES)
+
+
+def _odt_steps(elem):
+    tag = elem.tag
+    if tag == TEXT + "s":
+        return [("text", " " * _odt_space_count(elem))]
+    if tag == TEXT + "tab":
+        return [("text", "\t")]
+    if tag == TEXT + "line-break":
+        return [("text", "\n")]
+    if tag == TEXT + "note":
+        return []  # footnotes would land mid-text; leave them out entirely
+    steps = [("text", elem.text or "")]
+    for child in elem:
+        steps.append(("enter", child))
+        steps.append(("text", child.tail or ""))
+    if tag in (TEXT + "p", TEXT + "h"):
+        return [("begin", None)] + steps + [("end", None)]
+    return steps
 
 
 def extract_text(path):
@@ -127,16 +154,49 @@ def extract_text(path):
         except UnicodeDecodeError:
             return path.read_text(encoding="latin-1")
     if suffix == ".docx":
-        paragraphs = _docx_paragraphs(_read_xml_member(path, "word/document.xml"))
+        paragraphs = _paragraphs(_read_xml_member(path, "word/document.xml"), _docx_steps)
     else:
-        paragraphs = _odt_paragraphs(_read_xml_member(path, "content.xml"))
+        paragraphs = _paragraphs(_read_xml_member(path, "content.xml"), _odt_steps)
     return "\n\n".join(paragraphs) + "\n"
 
 
+def fingerprint(path):
+    """Return "<bytes> <first 12 hex chars of sha256>" for the raw file.
+
+    The story memory stores this per chapter; size alone misses edits that
+    keep the same length.
+    """
+
+    path = Path(path)
+    if not path.is_file():
+        raise ExtractError(f"arquivo não encontrado: {path}")
+    digest = hashlib.sha256()
+    size = 0
+    with path.open("rb") as handle:
+        for block in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(block)
+            size += len(block)
+    return f"{size} {digest.hexdigest()[:12]}"
+
+
 def main(argv):
+    usage = "uso: extract_text.py [--fingerprint] <arquivo .docx/.odt/.txt>"
+    want_fingerprint = bool(argv) and argv[0] == "--fingerprint"
+    if want_fingerprint:
+        argv = argv[1:]
     if len(argv) != 1:
-        print("uso: extract_text.py <arquivo .docx/.odt/.txt>", file=sys.stderr)
+        print(usage, file=sys.stderr)
         return 2
+    if want_fingerprint:
+        try:
+            print(fingerprint(argv[0]))
+        except ExtractError as exc:
+            print(f"erro: {exc}", file=sys.stderr)
+            return exc.code
+        except OSError as exc:
+            print(f"erro: não consegui ler {argv[0]} ({exc.strerror})", file=sys.stderr)
+            return 1
+        return 0
     try:
         text = extract_text(argv[0])
     except ExtractError as exc:

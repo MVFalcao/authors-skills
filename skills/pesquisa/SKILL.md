@@ -2,10 +2,13 @@
 name: pesquisa
 argument-hint: "[assunto ou arquivo .docx/.odt/.txt] [ajuda]"
 description: >-
-  Faça pesquisa para escritores em PT-BR sobre nomes, lugares, épocas,
-  profissões, detalhes técnicos ou livros de referência quando o escritor
-  pedir contexto verificável; não use para revisar gramática ou opinar sobre a
-  experiência de leitura.
+  Pesquisa para escritores em PT-BR (/livro:pesquisa). Use quando o escritor
+  pede "sugere sobrenomes italianos para imigrantes em São Paulo em 1910",
+  "como era um mercado de rua no Recife antigo?", "inventa um nome para um
+  reino do norte", "o que fazia um parteiro no século XIX?" ou livros de
+  referência sobre um tema. Entrega notas com fontes e marca o que não foi
+  verificado. Não use para revisar gramática (revisao) nem para opinar sobre
+  o texto (leitor-beta).
 ---
 
 # Writer research
@@ -30,7 +33,7 @@ Follow this workflow and keep every writer-facing reply in PT-BR.
    or use text pasted in the request. For a named `.doc`, `.pdf`, `.pages`,
    `.rtf`, or `.md`, say that the format is unsupported and ask the writer to
    save it as `.docx`, `.odt`, or `.txt`. Obtain named-file text through the
-   shared `../inicio/scripts/extract_text.py`; if unavailable, read a named
+   shared `../inicio/scripts/extract_text.py` (a path relative to this skill's own folder, not to the book folder); if unavailable, read a named
    `.txt` directly, or ask for a `.txt`/pasted text for `.docx` or `.odt`. Do
    not scan `manuscrito/`, guess a chapter, or substitute a neighboring file.
    Pure research requests that do not need manuscript context may proceed

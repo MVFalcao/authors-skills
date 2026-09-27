@@ -10,7 +10,10 @@ usage() {
     printf '%s\n' \
         'Usage: install.sh [--force] [--target target] <book-folder>' \
         '       install.sh [--force] [--target target] --global' \
-        '       install.sh [--force] [--target target] -- <book-folder>' >&2
+        '       install.sh [--force] [--target target] -- <book-folder>' \
+        '' \
+        'Targets: claude (default), agents, codex, cursor, gemini, opencode,' \
+        '         copilot (project only), all (= claude + agents)' >&2
 }
 
 die() {
@@ -182,10 +185,9 @@ cleanup() {
         rm -rf "$STAGING_DIR"
     fi
 
-    if [ "$exit_status" -ne 0 ] && [ "$MUTATION_STARTED" -eq 1 ] &&
-        [ "$TARGET_COUNT" -gt 1 ]; then
+    if [ "$exit_status" -ne 0 ] && [ "$MUTATION_STARTED" -eq 1 ]; then
         printf '%s\n' \
-            'install.sh: warning: multi-target installation is not transactional; earlier targets may remain installed' >&2
+            'install.sh: warning: installation stopped partway; some skills may already be replaced (without --force, old copies are in skills-backup/). Re-run the same command to finish.' >&2
     fi
 
     exit "$exit_status"

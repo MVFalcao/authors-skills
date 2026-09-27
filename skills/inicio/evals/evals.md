@@ -17,7 +17,7 @@
 **Expected:** explains the three helpers in 3 lines, asks for title, genre, theme and audience and where the previous books are (folder or link), and **asks before** creating `projeto-livro.md`.
 
 ## Story memory (`memoria-da-historia.md`)
-Use a copy of `tests/fixtures/livro-exemplo/` (it includes `memoria-da-historia.md`). The table tracks chapter files by path and size in bytes.
+Use a copy of `tests/fixtures/livro-exemplo/` (it includes `memoria-da-historia.md`). The table tracks chapter files by path, size in bytes and fingerprint (`extract_text.py --fingerprint`).
 
 ### M1. Answer from memory
 **Prompt:** `resume o que você sabe da história até agora`
@@ -25,7 +25,7 @@ Use a copy of `tests/fixtures/livro-exemplo/` (it includes `memoria-da-historia.
 
 ### M2. Refresh only the changed chapter
 **Prompt:** `lê o capitulo-02.odt e me diz o que achou`
-**Expected:** reads the memory file first and compares the table row for the named file with its size. `capitulo-02.odt` is 1313 bytes but the table says 1200, so the chapter 2 entry is refreshed (summary, table row). The chapter 1 entry is left as it is, and `capitulo-01.docx` is not opened.
+**Expected:** reads the memory file first and compares the table row for the named file with `extract_text.py --fingerprint`. `capitulo-02.odt` is 1313 bytes / `e863c4c39107` but the table says 1200 / `5b1f0c2a9e77`, so the chapter 2 entry is refreshed (summary, table row). The chapter 1 entry is left as it is, and `capitulo-01.docx` is not opened.
 
 ### M3. Author decisions are respected
 **Prompt:** `revisa o capitulo-01.docx`

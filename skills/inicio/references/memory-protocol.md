@@ -8,7 +8,7 @@ their reports, but may not create, edit, or refresh this file.
 
 Keep these sections in PT-BR:
 
-1. controle de atualização: `capítulo | última atualização | tamanho (bytes)`;
+1. controle de atualização: `capítulo | última atualização | tamanho (bytes) | impressão digital`;
 2. resumo por capítulo;
 3. personagens;
 4. lugares;
@@ -24,12 +24,12 @@ information and note the conflict for the writer.
 ## Refresh algorithm
 
 1. Read the control table before opening chapters.
-2. Compare each current chapter size with the stored byte count.
-3. Open only chapters needed for the request or whose size changed.
+2. For each chapter the task involves, run `scripts/extract_text.py --fingerprint <arquivo>` (it prints `<bytes> <impressão digital>`) and compare both values with the stored row. Size alone misses edits that keep the same length.
+3. Open only chapters needed for the request or whose fingerprint changed.
 4. Refresh only the changed chapter's summary and control row, plus sections
    directly affected by verified new information.
 5. After a leaf report, inspect its proposed updates, apply only supported
-   summaries, and record the date and exact byte count.
+   summaries, and record the date, the exact byte count and the fingerprint.
 
 When the file does not exist, explain what it will contain and ask permission
 before creating it. A refusal does not block a leaf report: continue without

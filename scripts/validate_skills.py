@@ -21,6 +21,7 @@ _MAX_BODY_LINES = 500
 _FRONTMATTER_DELIMITER = "---"
 _FIELD_RE = re.compile(r"^([A-Za-z_][A-Za-z0-9_-]*)\s*:\s*(.*)$")
 _REFERENCE_PREFIX = "references/"
+_KEBAB_CASE = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*")
 _REFERENCE_TRAILING_PUNCTUATION = ".,;:!?)]}>\"'`*_~"
 _REFERENCE_LEADING_PUNCTUATION = "([<{\"'"
 
@@ -79,9 +80,13 @@ def _block_scalar(
     content = lines[start:end]
     nonblank = [line for line in content if line.strip()]
     if nonblank:
-        indentation = min(len(line) - len(line.lstrip(" ")) for line in nonblank)
         if any(line.startswith("\t") for line in content):
             return "", end, "tabs are not supported for block scalar indentation"
+        # YAML takes the indentation from the first non-blank line; a later
+        # line indented less is a parse error for real YAML loaders.
+        indentation = len(nonblank[0]) - len(nonblank[0].lstrip(" "))
+        if any(len(line) - len(line.lstrip(" ")) < indentation for line in nonblank):
+            return "", end, "inconsistent block scalar indentation"
         content = [line[indentation:] if line.strip() else "" for line in content]
 
     if indicator.startswith(">"):
@@ -275,6 +280,8 @@ def validate_skill(path: Union[str, Path]) -> list[str]:
         errors.append("name: missing")
     elif actual_name != expected_name:
         errors.append(f"name: expected {expected_name!r}, got {actual_name!r}")
+    if actual_name and not _KEBAB_CASE.fullmatch(actual_name):
+        errors.append(f"name: {actual_name!r} is not lowercase kebab-case")
 
     description = fields.get("description")
     if description is None or not _normalised_description(description):

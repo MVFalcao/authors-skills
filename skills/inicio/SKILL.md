@@ -2,10 +2,13 @@
 name: inicio
 argument-hint: "[tarefa, arquivo .docx/.odt/.txt ou ajuda]"
 description: >-
-  Organize a ajuda para um livro em PT-BR: inicialize o projeto, mantenha a
-  memória da história, encaminhe pedidos de revisão, opinião ou pesquisa e
-  combine os relatórios quando o escritor pedir coordenação; não substitua o
-  trabalho das skills especialistas.
+  Ponto de entrada do livro (/livro:inicio). Use quando o escritor pede ajuda
+  geral ou mais de uma coisa ao mesmo tempo: "me ajuda a organizar meu
+  romance", "quais ajudantes eu tenho?", "confere o prologo.docx e depois me
+  dá tua impressão", "quero começar um projeto novo". Cria o projeto (com
+  permissão), mantém a memória da história, encaminha para revisao,
+  leitor-beta ou pesquisa e junta os relatórios. Não faz o trabalho dessas
+  skills; um pedido de uma coisa só vai direto para a skill certa.
 ---
 
 # Book orchestrator
@@ -16,7 +19,7 @@ writer-facing reply in PT-BR and follow this workflow.
 0. Treat the complete command text as `$ARGUMENTS`, trim it, and resolve help
    intent before any chapter or output access. Empty input, `ajuda`, `help`,
    `como uso isso?`, and any case- or punctuation-variant meta-question about
-   what this skill or its helpers do (for example, `o que vocês fazem?` or `me
+   what this skill or its helpers do (for example, `o que cada ajudante faz?` or `me
    explica o leitor beta`) enter help mode. Read the relevant
    `references/ajuda.md` (and, if it exists, `projeto-livro.md` read-only to
    adapt the wording) and return PT-BR help. Do not read memory or a chapter,
