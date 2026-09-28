@@ -44,6 +44,11 @@ whether a following `a` creates crase.
 - Certo: `Ela assistiu ao espetáculo em silêncio.`
 - Errado: `O relatório obedece as normas do arquivo.`
 - Certo: `O relatório obedece às normas do arquivo.`
+- Errado: `Ele sempre preferiu mais o campo do que a praia.`
+- Certo: `Ele sempre preferiu o campo à praia.`
+
+`Preferir` already means "gostar mais": `preferir mais`, `preferir … do que` and
+`preferir … que` are all **erro**, not atenção. Suggest `preferir X a Y`.
 
 ## Colocação pronominal
 

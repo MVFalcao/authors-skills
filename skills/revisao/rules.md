@@ -26,7 +26,7 @@
 - Review at most one chapter per pass. Split chapters longer than ~5,000 words into parts.
 
 ## Manuscript files
-- Read only the file the writer names, or text they paste. If neither is given, ask for the file name. Never guess which file a chapter is.
+- Read only the file the writer names, or text they paste. If neither is given, ask for the file name. Never guess which file a chapter is: you may list the file names as neutral options, but don't suggest or ask to confirm one (not "é o capitulo-01.docx?").
 - Supported formats: `.docx`, `.odt`, `.txt`, read with the `inicio` skill's `scripts/extract_text.py`. For other formats, ask the writer to save the chapter as `.docx`.
 
 ## Saving

@@ -7,8 +7,10 @@ description: >-
   ortografia nesse parágrafo?", "vê se a regência está certa aqui", "arruma
   as vírgulas deste trecho" ou envia um .docx/.odt/.txt ou texto colado para
   correção. Gera uma tabela de achados (erro, atenção, possível escolha de
-  estilo) sem reescrever o texto. Não use para opinião de leitor
-  (leitor-beta) nem para pesquisa (pesquisa).
+  estilo) sem reescrever o texto. Sem arquivo nomeado ("revisa o capítulo
+  1"), carregue esta skill antes de listar pastas ou escolher um arquivo: ela
+  pergunta qual é. Não use para opinião de leitor (leitor-beta) nem para
+  pesquisa (pesquisa).
 ---
 
 # Grammar review
@@ -25,7 +27,8 @@ Follow this workflow and keep every writer-facing reply in PT-BR.
    If the request names `.doc`, `.pdf`, `.pages`, `.rtf`, or `.md`, say that the
    format is unsupported and ask the writer to save it as `.docx`, `.odt`, or
    `.txt`. If no supported file or pasted passage is supplied, ask one short
-   question; file names may be listed as options without opening `manuscrito/`.
+   question; file names may be listed as neutral options without opening
+   `manuscrito/`, but never suggest which one is the chapter asked for.
 1. Read `rules.md`; it overrides the defaults below. Read
    `references/checklist-pt-br.md` while classifying findings.
 2. Before opening any chapter, read `projeto-livro.md` and
