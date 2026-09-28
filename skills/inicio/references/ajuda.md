@@ -34,6 +34,6 @@ Em pedidos que envolvem manuscrito, informe exatamente o arquivo `.docx`,
 
 ## Onde os resultados ficam
 
-Relatórios autorizados ficam em `revisao/`; notas de pesquisa ficam em
+Relatórios ficam em `revisao/`; notas de pesquisa ficam em
 `pesquisa/`; o projeto e a memória ficam na pasta do livro. O modo de ajuda não
 cria nem altera arquivos.

@@ -28,7 +28,8 @@ cooperativa de montanha”.
 
 ## Onde os resultados ficam
 
-Com autorização, notas ficam em `pesquisa/`, com nomes como
-`pesquisa/nomes-<assunto>.md` ou `pesquisa/lugar-<assunto>.md`. Sem autorização
-ou acesso a arquivos, o resultado completo é devolvido no chat. O modo de
+As notas ficam em `pesquisa/` (se a pasta ainda não existir, eu pergunto antes de criá-la), com nomes como
+`pesquisa/nomes-<assunto>.md` ou `pesquisa/lugar-<assunto>.md`. Se você
+não quiser a pasta ou não houver acesso a arquivos, o resultado completo é
+devolvido no chat. O modo de
 ajuda não lê manuscrito nem cria arquivos.

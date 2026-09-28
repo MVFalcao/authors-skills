@@ -25,5 +25,5 @@ casual e diga onde minha atenção cai”.
 
 ## Onde os resultados ficam
 
-Com autorização, o relatório fica em `revisao/<capitulo>-leitura-beta.md`. O
+O relatório fica em `revisao/<capitulo>-leitura-beta.md` (se a pasta ainda não existir, eu pergunto antes de criá-la). O
 manuscrito não é alterado. O modo de ajuda não lê manuscrito nem cria arquivos.

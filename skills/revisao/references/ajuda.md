@@ -27,6 +27,6 @@ comando. A revisão nunca reescreve o texto sem que isso seja pedido.
 
 ## Onde os resultados ficam
 
-Com autorização, o relatório fica em `revisao/<capitulo>-gramatica.md`. Uma
-versão corrigida só é criada se for pedida e autorizada, em um arquivo separado.
+O relatório fica em `revisao/<capitulo>-gramatica.md` (se a pasta ainda não existir, eu pergunto antes de criá-la). Uma
+versão corrigida só é criada se você pedir, em um arquivo separado.
 O modo de ajuda não lê manuscrito nem cria arquivos.
