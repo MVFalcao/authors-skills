@@ -64,7 +64,7 @@ da experiência de leitura e a pesquisa do contexto verificável.
 
 Informe exatamente um arquivo `.docx`, `.odt` ou `.txt`, ou cole o trecho no
 pedido. Quando a ferramenta consegue executar o extrator compartilhado, os
-helpers leem esses três formatos. Se essa capacidade não estiver disponível,
+ajudantes leem esses três formatos. Se essa capacidade não estiver disponível,
 eles leem diretamente um `.txt`; para `.docx` ou `.odt`, peça um `.txt` ou
 cole o texto. O ajudante lê somente o arquivo que você nomear; ele não escolhe
 um capítulo nem vasculha a pasta `manuscrito/`.
