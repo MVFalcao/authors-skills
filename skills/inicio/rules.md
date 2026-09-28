@@ -9,7 +9,7 @@
 - Only open full chapters when the task needs them or they changed since the memory was updated.
 
 ## Manuscript files
-- Read only the file the writer names. Never guess which file is "capítulo 1" and never scan chapters on your own. If no file is named, ask for it (you may list the file names in `manuscrito/` as options, without opening them).
+- Read only the file the writer names. Never guess which file is "capítulo 1" and never scan chapters on your own. If no file is named, ask for it (you may list the file names in `manuscrito/` as neutral options, without opening them, but don't suggest or ask to confirm one).
 - Supported formats: `.docx`, `.odt`, `.txt`. Read them with `scripts/extract_text.py`. For `.doc`, `.pdf`, `.pages`, `.rtf` or `.md`, ask the writer to save the chapter as `.docx`.
 - Never modify the manuscript file.
 

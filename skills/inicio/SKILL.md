@@ -8,7 +8,9 @@ description: >-
   dá tua impressão", "quero começar um projeto novo". Cria o projeto (com
   permissão), mantém a memória da história, encaminha para revisao,
   leitor-beta ou pesquisa e junta os relatórios. Não faz o trabalho dessas
-  skills; um pedido de uma coisa só vai direto para a skill certa.
+  skills; um pedido de uma coisa só vai direto para a skill certa. Sem
+  arquivo nomeado, carregue a skill certa antes de listar pastas ou escolher
+  um arquivo: ela pergunta qual é.
 ---
 
 # Book orchestrator
@@ -47,8 +49,9 @@ writer-facing reply in PT-BR and follow this workflow.
    yet given, allow a non-mutating leaf report to continue while stating the
    limitation. Never create files or directories silently.
 3. A manuscript-dependent request without a file name or pasted text gets one
-   short question; it may list file names in `manuscrito/` as options without
-   opening or scanning their contents. Pure initialization, memory-summary,
+   short question; it may list file names in `manuscrito/` as neutral options
+   without opening or scanning their contents, but never suggests which one is
+   the chapter asked for. Pure initialization, memory-summary,
    and research requests that do not need manuscript text may proceed without
    a file. Pass
    a named file to `scripts/extract_text.py` only when the selected leaf needs
