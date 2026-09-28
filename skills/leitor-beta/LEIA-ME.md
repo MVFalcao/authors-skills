@@ -1,4 +1,4 @@
-<!-- fonte: e25b37bfbd30 -->
+<!-- fonte: 57ecc783e0fb -->
 > Tradução para leitura. As instruções que valem estão em `SKILL.md` e `rules.md` (em inglês).
 
 ## O que faz
@@ -99,7 +99,7 @@ A persona muda **como** a opinião é entregue, nunca **o que** é verdade sobre
 - Formatos suportados: `.docx`, `.odt`, `.txt`, lidos com o `scripts/extract_text.py` da skill `inicio`. Para outros formatos, pede ao escritor para salvar o capítulo como `.docx`.
 
 ### Salvamento
-- Para saber se `revisao/` existe, lista a própria pasta do livro (por exemplo com `ls`). Uma busca por arquivos não enxerga uma pasta vazia.
+- Para saber se `revisao/` existe, lista a própria pasta do livro (por exemplo com `ls`). Uma busca por arquivos não enxerga uma pasta vazia. Se listar não for permitido, roda `python3 -c "import os; print(os.path.isdir('revisao'))"`. Se não conseguir verificar de jeito nenhum, diz que não conseguiu verificar; nunca diz que a pasta não existe.
 - Se `revisao/` já existe na pasta do livro, salva o resultado lá sem perguntar e informa o caminho do arquivo na resposta.
 - Se `revisao/` não existe, pergunta uma vez antes de criar a pasta. Se o escritor disser que não, devolve o resultado no chat.
 - Nunca sobrescreve um resultado anterior: se o nome do arquivo já estiver em uso, acrescenta `-2`, `-3` e assim por diante.

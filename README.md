@@ -129,4 +129,5 @@ globais correspondentes; para OpenCode, usa `~/.config/opencode/skills`.
 
 As regras de contribuição e o layout estão em `AGENTS.md`. O validador é
 `python3 scripts/validate_skills.py`; ele verifica as quatro skills. Os testes
-ficam em `tests/` e não são rastreados no git.
+ficam em `tests/`: rode `python3 -m unittest discover tests` e, para o teste de
+ponta a ponta com o Claude Code, `sh tests/e2e/run.sh`.

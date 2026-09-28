@@ -9,7 +9,7 @@
 | manuscrito/capitulo-02.odt | 2026-09-20 | 1200 | 5b1f0c2a9e77 |
 
 ## Resumo por capítulo
-- **Cap. 1 — A volta:** Marina vai à praia antes do amanhecer e vê os pescadores voltarem; o barco do pai quase vira. Seu Tonho anuncia a pesca do dia seguinte. Começa a chover e Marina continua olhando o mar.
+- **Cap. 1 — A volta:** Marina vai à praia antes do amanhecer e vê os pescadores voltarem; o barco que era do pai quase vira. Seu Tonho anuncia a pesca do dia seguinte. Começa a chover e Marina continua olhando o mar.
 - **Cap. 2 — A janela:** Marina encontra aberta a lata onde Dona Zefa guarda as cartas do marido. A mãe olha o mar em silêncio. ⚠️ verificar: resumo anterior à última revisão do capítulo.
 
 ## Personagens

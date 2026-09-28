@@ -28,7 +28,7 @@
 - Keep a note to about 2 pages. Offer a deeper follow-up instead of dumping everything.
 
 ## Saving
-- Check whether `pesquisa/` exists by listing the book folder itself (for example `ls`). A file search misses an empty folder.
+- Check whether `pesquisa/` exists by listing the book folder itself (for example `ls`). A file search misses an empty folder. If listing isn't allowed, run `python3 -c "import os; print(os.path.isdir('pesquisa'))"`. If you can't check at all, say you couldn't check; never say the folder is missing.
 - If `pesquisa/` already exists in the book folder, save the result there without asking, and give the file path in the reply.
 - If `pesquisa/` doesn't exist, ask once before creating it. If the writer says no, return the result in the chat.
 - Never overwrite an earlier result: if the file name is taken, add `-2`, `-3`, and so on.

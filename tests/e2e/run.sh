@@ -35,7 +35,16 @@ run_case() {
         "WebSearch" "WebFetch" "Bash(python3:*)" "Bash(ls:*)" \
         >"$OUT/out-$name.md" 2>"$OUT/err-$name.txt") || status=$?
     saved=$(cd "$dir" && find revisao pesquisa -type f 2>/dev/null | tr '\n' ' ')
-    echo "$name exit=$status saved: ${saved:-none}"
+    # Cases that must save a file vs cases that must not create any.
+    case "$name" in
+        revisao|leitor|pesquisa) want=file ;;
+        *) want=none ;;
+    esac
+    verdict=PASS
+    [ "$status" -eq 0 ] || verdict=FAIL
+    if [ "$want" = file ] && [ -z "$saved" ]; then verdict=FAIL; fi
+    if [ "$want" = none ] && [ -n "$saved" ]; then verdict=FAIL; fi
+    echo "$verdict $name exit=$status saved: ${saved:-none}" | tee "$OUT/verdict-$name.txt"
 }
 
 run_case revisao "revisa a gramática de manuscrito/capitulo-01.docx" &
@@ -46,3 +55,10 @@ run_case ajuda "/leitor-beta" &
 run_case semarquivo "revisa o capítulo 1" &
 wait
 echo "e2e: outputs in $OUT"
+# Only file effects are checked here; read out-<case>.md against the evals
+# for the content (errors found, one question asked, and so on).
+if grep -q '^FAIL' "$OUT"/verdict-*.txt; then
+    echo "e2e: FAILED" >&2
+    exit 1
+fi
+echo "e2e: file checks passed"

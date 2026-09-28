@@ -1,4 +1,4 @@
-<!-- fonte: 30bdd3c088cb -->
+<!-- fonte: f285a7399ec8 -->
 > Tradução para leitura. As instruções que valem estão em `SKILL.md` e `rules.md` (em inglês).
 
 ## O que faz
@@ -89,7 +89,7 @@ Para um pedido que não é sobre um lugar, os títulos específicos de lugar sã
 - Mantém a nota com cerca de 2 páginas. Oferece um aprofundamento em vez de despejar tudo de uma vez.
 
 ### Salvamento
-- Para saber se `pesquisa/` existe, lista a própria pasta do livro (por exemplo com `ls`). Uma busca por arquivos não enxerga uma pasta vazia.
+- Para saber se `pesquisa/` existe, lista a própria pasta do livro (por exemplo com `ls`). Uma busca por arquivos não enxerga uma pasta vazia. Se listar não for permitido, roda `python3 -c "import os; print(os.path.isdir('pesquisa'))"`. Se não conseguir verificar de jeito nenhum, diz que não conseguiu verificar; nunca diz que a pasta não existe.
 - Se `pesquisa/` já existe na pasta do livro, salva o resultado lá sem perguntar e informa o caminho do arquivo na resposta.
 - Se `pesquisa/` não existe, pergunta uma vez antes de criar a pasta. Se o escritor disser que não, devolve o resultado no chat.
 - Nunca sobrescreve um resultado anterior: se o nome do arquivo já estiver em uso, acrescenta `-2`, `-3` e assim por diante.
