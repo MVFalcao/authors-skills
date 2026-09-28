@@ -9,6 +9,7 @@ safe to import in a clean Python installation.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 import sys
@@ -251,6 +252,48 @@ def _reference_errors(text: str, skill_dir: Path) -> list[str]:
     return errors
 
 
+_LEIA_ME_STAMP = re.compile(r"<!--\s*fonte:\s*([0-9a-f]{12})\s*-->")
+
+
+def leia_me_stamp(skill_dir: Union[str, Path]) -> str:
+    """Hash of SKILL.md + rules.md that a LEIA-ME.md translation was made from.
+
+    LEIA-ME.md is a PT-BR reading copy for people. It records this stamp in
+    its first line, so the validator can tell when the English source changed
+    and the translation needs an update.
+    """
+
+    skill_dir = Path(skill_dir)
+    digest = hashlib.sha256()
+    for name in ("SKILL.md", "rules.md"):
+        source = skill_dir / name
+        if source.is_file():
+            digest.update(source.read_bytes().replace(b"\r\n", b"\n"))
+        digest.update(b"\0")
+    return digest.hexdigest()[:12]
+
+
+def _leia_me_errors(skill_dir: Path) -> list[str]:
+    leia_me = skill_dir / "LEIA-ME.md"
+    if not leia_me.is_file():
+        return []
+    try:
+        first_lines = leia_me.read_text(encoding="utf-8").splitlines()[:3]
+    except (OSError, UnicodeDecodeError) as exc:
+        return [f"LEIA-ME.md: cannot read ({exc})"]
+    expected = leia_me_stamp(skill_dir)
+    for line in first_lines:
+        match = _LEIA_ME_STAMP.search(line)
+        if match:
+            if match.group(1) == expected:
+                return []
+            return [
+                f"LEIA-ME.md: out of date with SKILL.md/rules.md; update the "
+                f"translation and set <!-- fonte: {expected} -->"
+            ]
+    return [f"LEIA-ME.md: missing stamp line <!-- fonte: {expected} --> at the top"]
+
+
 def validate_skill(path: Union[str, Path]) -> list[str]:
     """Return all validation errors for the skill directory at *path*."""
 
@@ -298,6 +341,7 @@ def validate_skill(path: Union[str, Path]) -> list[str]:
     errors.extend(_reference_errors(text, skill_dir))
     if "rules.md" in text and not (skill_dir / "rules.md").is_file():
         errors.append("rules: SKILL.md mentions rules.md but the file is missing")
+    errors.extend(_leia_me_errors(skill_dir))
     return errors
 
 

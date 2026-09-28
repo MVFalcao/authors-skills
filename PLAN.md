@@ -130,3 +130,10 @@ Write `README.md` at the repo root, in clear PT-BR for writers (not developers).
 8. **Para quem mantém o repositório**: one short paragraph pointing to `AGENTS.md`, `scripts/validate_skills.py`, and that tests live in `tests/` (not tracked in git).
 
 Rules: examples must not reuse text from `tests/fixtures/` or `skills/*/evals/`. Keep it under ~150 lines. Don't invent features that the skills don't have.
+
+## PT-BR reading copy `LEIA-ME.md` (requested 2026-09-27)
+- Each skill gets `skills/<name>/LEIA-ME.md`: a full PT-BR translation of that skill's `SKILL.md` **and** `rules.md`, for people to read. The agent never follows it; SKILL.md must not mention it.
+- First line: `<!-- fonte: <stamp> -->`, where `<stamp>` comes from `leia_me_stamp()` in `scripts/validate_skills.py` (hash of SKILL.md + rules.md). The validator fails when the stamp is stale, so update the translation whenever SKILL.md or rules.md changes. `python3 scripts/validate_skills.py` prints the expected stamp in its error.
+- Second line: `> Tradução para leitura. As instruções que valem estão em \`SKILL.md\` e \`rules.md\` (em inglês).`
+- Sections: O que faz; Quando usar e quando não usar; Como funciona (the numbered workflow, translated step by step); Formato do resultado (translate the headings of the output template, keep the PT-BR template as is); Regras (translated rules.md, same headings and bullets); Onde ficam os arquivos.
+- Clear PT-BR for writers. Keep file names, commands (`/livro:...`), severity labels (erro / atenção / possível escolha de estilo) and `⚠️ verificar` verbatim. Don't add rules or features that aren't in SKILL.md or rules.md.
