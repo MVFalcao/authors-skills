@@ -7,7 +7,8 @@ description: >-
   quem lê?", "lê com olhar de fã de fantasia", "quero uma crítica sincera" ou
   "compara com meu livro anterior". Avalia gancho, ritmo, personagens,
   diálogos, clareza e impacto, com personas gentil, neutro, crítico ou todas.
-  Não use para corrigir gramática (revisao) nem para pesquisar fatos
+  Sem arquivo nomeado ("o que achou do capítulo 2?"), carregue esta skill
+  antes de listar pastas ou escolher um arquivo: ela pergunta qual é. Não use para corrigir gramática (revisao) nem para pesquisar fatos
   (pesquisa).
 ---
 
@@ -25,8 +26,8 @@ Follow this workflow and keep every writer-facing reply in PT-BR.
    pasted text. If the request names `.doc`, `.pdf`, `.pages`, `.rtf`, or `.md`,
    say that the format is unsupported and ask the writer to save it as `.docx`,
    `.odt`, or `.txt`. If no supported file or pasted passage is supplied, ask
-   one short question; file names may be listed as options without opening
-   `manuscrito/`.
+   one short question; file names may be listed as neutral options without
+   opening `manuscrito/`, but never suggest which one is the chapter asked for.
 1. Read `rules.md`; it overrides the defaults below. Read
    `references/genre-expectations.md` only for the genre and audience in the
    project context.

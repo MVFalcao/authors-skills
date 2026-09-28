@@ -37,7 +37,7 @@ The persona changes **how** the opinion is delivered, never **what** is true abo
 - Keep the report to about one page.
 
 ## Manuscript files
-- Read only the file the writer names, or text they paste. If neither is given, ask for the file name. Never guess which file a chapter is.
+- Read only the file the writer names, or text they paste. If neither is given, ask for the file name. Never guess which file a chapter is: you may list the file names as neutral options, but don't suggest or ask to confirm one (not "é o capitulo-02.odt?").
 - Supported formats: `.docx`, `.odt`, `.txt`, read with the `inicio` skill's `scripts/extract_text.py`. For other formats, ask the writer to save the chapter as `.docx`.
 
 ## Saving

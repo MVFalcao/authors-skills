@@ -1,4 +1,4 @@
-<!-- fonte: e6f89d3b25d1 -->
+<!-- fonte: 54f4ee7b159c -->
 > Tradução para leitura. As instruções que valem estão em `SKILL.md` e `rules.md` (em inglês).
 
 ## O que faz
@@ -7,13 +7,13 @@ Faz a leitura beta de um capítulo ou trecho em PT-BR (`/livro:leitor-beta`). Av
 
 ## Quando usar e quando não usar
 
-Use quando o escritor pergunta "gostou do prologo.docx?", "a abertura segura quem lê?", "lê com olhar de fã de fantasia", "quero uma crítica sincera" ou "compara com meu livro anterior".
+Use quando o escritor pergunta "gostou do prologo.docx?", "a abertura segura quem lê?", "lê com olhar de fã de fantasia", "quero uma crítica sincera" ou "compara com meu livro anterior". Sem arquivo nomeado ("o que achou do capítulo 2?"), a skill deve ser carregada antes de listar pastas ou escolher um arquivo: ela pergunta qual é.
 
 Não use para corrigir gramática (isso é a revisao) nem para pesquisar fatos (isso é a pesquisa). Um pedido para "ler esta cena como leitora casual e apontar o que faria continuar" pertence aqui; um pedido para normalizar a ortografia pertence à revisao.
 
 ## Como funciona
 
-0. Trata o texto completo do comando como o pedido do escritor, tira espaços em branco e entra em modo de ajuda para entrada vazia ou para qualquer pergunta (sem diferenciar maiúsculas/pontuação) sobre o que a skill faz ou como usá-la (por exemplo "ajuda", "o que o leitor beta faz?" ou "como funciona o leitor beta?"). Nesse caso lê `references/ajuda.md` e, quando existir, `projeto-livro.md` só para leitura, para adaptar o texto, sem ler memória nem capítulo, sem inspecionar resultados e sem criar arquivos. Fora do modo de ajuda, exige exatamente um arquivo `.docx`, `.odt` ou `.txt` nomeado explicitamente, ou texto colado. Se o pedido nomear `.doc`, `.pdf`, `.pages`, `.rtf` ou `.md`, diz que o formato não é suportado e pede para salvar como `.docx`, `.odt` ou `.txt`. Se nenhum arquivo suportado nem trecho colado for dado, faz uma pergunta curta; os nomes de arquivo podem ser listados como opções, sem abrir `manuscrito/`.
+0. Trata o texto completo do comando como o pedido do escritor, tira espaços em branco e entra em modo de ajuda para entrada vazia ou para qualquer pergunta (sem diferenciar maiúsculas/pontuação) sobre o que a skill faz ou como usá-la (por exemplo "ajuda", "o que o leitor beta faz?" ou "como funciona o leitor beta?"). Nesse caso lê `references/ajuda.md` e, quando existir, `projeto-livro.md` só para leitura, para adaptar o texto, sem ler memória nem capítulo, sem inspecionar resultados e sem criar arquivos. Fora do modo de ajuda, exige exatamente um arquivo `.docx`, `.odt` ou `.txt` nomeado explicitamente, ou texto colado. Se o pedido nomear `.doc`, `.pdf`, `.pages`, `.rtf` ou `.md`, diz que o formato não é suportado e pede para salvar como `.docx`, `.odt` ou `.txt`. Se nenhum arquivo suportado nem trecho colado for dado, faz uma pergunta curta; os nomes de arquivo podem ser listados como opções neutras, sem abrir `manuscrito/`, mas nunca sugere qual deles é o capítulo pedido.
 1. Lê `rules.md`; ele substitui os padrões descritos aqui. Lê `references/genre-expectations.md` só para o gênero e o público do contexto do projeto.
 2. Antes de abrir qualquer capítulo, lê `projeto-livro.md` e `memoria-da-historia.md` quando existirem. Abre só o capítulo pedido ou o que mudou. Não cria nem atualiza a memória compartilhada; devolve as mudanças de resumo propostas para a skill `inicio`. Se não houver uma passagem de tarefa vinda do orquestrador e faltar contexto do projeto, faz uma pergunta curta e objetiva sobre o contexto, ou declara as suposições que vai usar; não inicializa os arquivos do projeto aqui.
 3. Escolhe a persona de tom e o perfil de leitor pedidos, de acordo com `rules.md`. Para a persona padrão, informa: "Leitura no modo neutro — posso fazer gentil ou crítica".
@@ -100,7 +100,7 @@ A persona muda **como** a opinião é entregue, nunca **o que** é verdade sobre
 - Mantém o relatório com cerca de uma página.
 
 ### Arquivos do manuscrito
-- Lê apenas o arquivo que o escritor nomear, ou o texto que ele colar. Se nenhum dos dois for dado, pede o nome do arquivo. Nunca adivinha qual arquivo é um capítulo.
+- Lê apenas o arquivo que o escritor nomear, ou o texto que ele colar. Se nenhum dos dois for dado, pede o nome do arquivo. Nunca adivinha qual arquivo é um capítulo: pode listar os nomes dos arquivos como opções neutras, mas não sugere nem pede para confirmar um deles (não "é o capitulo-02.odt?").
 - Formatos suportados: `.docx`, `.odt`, `.txt`, lidos com o `scripts/extract_text.py` da skill `inicio`. Para outros formatos, pede ao escritor para salvar o capítulo como `.docx`.
 
 ### Salvamento
