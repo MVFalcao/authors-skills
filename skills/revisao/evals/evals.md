@@ -7,7 +7,7 @@ Run in a copy of `tests/fixtures/livro-exemplo/` with the skills installed.
 **Expected:**
 - Creates `revisao/capitulo-01-gramatica.md` with an issues table (trecho, problema, sugestão, gravidade).
 - Finds all 7 errors in `tests/fixtures/gabarito-capitulo-01.md`.
-- Flags "Nóis vai pescar amanhã" as **possível escolha de estilo**, not as an error.
+- Does NOT flag "Nóis vai pescar amanhã" as **erro**. Because `memoria-da-historia.md` lists it under "Decisões do autor", it may leave it out of the table and mention it as an accepted choice (see inicio eval M3). Without that entry it must be **possível escolha de estilo**.
 - Reads the .docx through the text extractor. Does NOT rewrite or modify the .docx.
 
 ## 2. Pasted excerpt
