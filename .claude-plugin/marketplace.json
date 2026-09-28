@@ -1,0 +1,14 @@
+{
+  "name": "authors-skills",
+  "owner": {
+    "name": "MVFalcao"
+  },
+  "plugins": [
+    {
+      "name": "livro",
+      "source": "./",
+      "description": "Ajudantes para escrever um livro em português: revisão gramatical, leitura beta, pesquisa e um ponto de entrada que organiza o projeto.",
+      "version": "0.1.0"
+    }
+  ]
+}

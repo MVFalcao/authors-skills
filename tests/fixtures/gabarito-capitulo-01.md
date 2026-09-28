@@ -1,4 +1,4 @@
-# Answer key: livro-exemplo/manuscrito/capitulo-01.md
+# Answer key: livro-exemplo/manuscrito/capitulo-01.docx
 
 Kept OUTSIDE the book folder so the skill under test can't see it.
 
