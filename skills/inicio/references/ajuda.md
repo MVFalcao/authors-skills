@@ -1,7 +1,7 @@
 # Ajuda — início
 
 Coordena o trabalho do livro: prepara o projeto, encaminha revisão, leitura
-beta e pesquisa, e reúne os resultados. Você também pode fazer esses pedidos em
+beta, pesquisa e design editorial, e reúne os resultados. Você também pode fazer esses pedidos em
 linguagem natural, sem usar o comando.
 
 ## O que posso fazer
@@ -12,6 +12,9 @@ linguagem natural, sem usar o comando.
   Exemplo: `/livro:leitor-beta cena.txt crítico`.
 - `/livro:pesquisa` — reúne contexto verificável para nomes, lugares e épocas.
   Exemplo: `/livro:pesquisa clima de uma cidade costeira em 1920`.
+- `/livro:design-editorial` — planeja formato, tipografia, diagramação e
+  produção gráfica (papel, acabamento, gráfica).
+  Exemplo: `/livro:design-editorial projeto gráfico em 14x21`.
 - `/livro:inicio` — organiza o projeto, a memória e combina essas etapas.
   Exemplo: `/livro:inicio revise e depois avalie capitulo.docx`.
 
@@ -35,5 +38,5 @@ Em pedidos que envolvem manuscrito, informe exatamente o arquivo `.docx`,
 ## Onde os resultados ficam
 
 Relatórios ficam em `revisao/`; notas de pesquisa ficam em
-`pesquisa/`; o projeto e a memória ficam na pasta do livro. O modo de ajuda não
+`pesquisa/`; especificações de design ficam em `design/`; o projeto e a memória ficam na pasta do livro. O modo de ajuda não
 cria nem altera arquivos.

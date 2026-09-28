@@ -7,10 +7,10 @@ description: >-
   romance", "quais ajudantes eu tenho?", "confere o prologo.docx e depois me
   dá tua impressão", "quero começar um projeto novo". Cria o projeto (com
   permissão), mantém a memória da história, encaminha para revisao,
-  leitor-beta ou pesquisa e junta os relatórios. Não faz o trabalho dessas
-  skills; um pedido de uma coisa só vai direto para a skill certa. Sem
-  arquivo nomeado, carregue a skill certa antes de listar pastas ou escolher
-  um arquivo: ela pergunta qual é.
+  leitor-beta, pesquisa ou design-editorial e junta os relatórios. Não faz o
+  trabalho dessas skills; um pedido de uma coisa só vai direto para a skill
+  certa. Sem arquivo nomeado, carregue a skill certa antes de listar pastas ou
+  escolher um arquivo: ela pergunta qual é.
 ---
 
 # Book orchestrator
@@ -86,10 +86,11 @@ First use:
 Revisão gramatical: identifica erros de português, sem avaliar a experiência de leitura.
 Leitura beta: avalia como um leitor percebe gancho, ritmo, clareza e impacto.
 Pesquisa: reúne contexto verificável sobre nomes, lugares, épocas ou outros detalhes.
+Design editorial: planeja formato, tipografia, diagramação e produção gráfica do livro.
 Para preparar o projeto, preciso de título, gênero, tema, público e localização
 dos livros anteriores, POV, tempo verbal e o caminho do manuscrito. Posso criar
-projeto-livro.md, memoria-da-historia.md e as pastas manuscrito/, revisao/ e
-pesquisa/?
+projeto-livro.md, memoria-da-historia.md e as pastas manuscrito/, revisao/,
+pesquisa/ e design/?
 ```
 
 Ambiguous request:

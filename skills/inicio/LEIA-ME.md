@@ -1,9 +1,9 @@
-<!-- fonte: 62c22fb2d395 -->
+<!-- fonte: e9958fba5842 -->
 > Tradução para leitura. As instruções que valem estão em `SKILL.md` e `rules.md` (em inglês).
 
 ## O que faz
 
-É o ponto de entrada do livro (`/livro:inicio`). Cria o projeto (com permissão), mantém a memória da história, encaminha o pedido para revisao, leitor-beta ou pesquisa, e junta os relatórios no final.
+É o ponto de entrada do livro (`/livro:inicio`). Cria o projeto (com permissão), mantém a memória da história, encaminha o pedido para revisao, leitor-beta, pesquisa ou design-editorial, e junta os relatórios no final.
 
 ## Quando usar e quando não usar
 
@@ -32,10 +32,11 @@ Primeiro uso:
 Revisão gramatical: identifica erros de português, sem avaliar a experiência de leitura.
 Leitura beta: avalia como um leitor percebe gancho, ritmo, clareza e impacto.
 Pesquisa: reúne contexto verificável sobre nomes, lugares, épocas ou outros detalhes.
+Design editorial: planeja formato, tipografia, diagramação e produção gráfica do livro.
 Para preparar o projeto, preciso de título, gênero, tema, público e localização
 dos livros anteriores, POV, tempo verbal e o caminho do manuscrito. Posso criar
-projeto-livro.md, memoria-da-historia.md e as pastas manuscrito/, revisao/ e
-pesquisa/?
+projeto-livro.md, memoria-da-historia.md e as pastas manuscrito/, revisao/,
+pesquisa/ e design/?
 ```
 
 Pedido ambíguo:
@@ -72,11 +73,11 @@ Um exemplo de pedido coordenado é "pesquise o cenário e depois avalie a cena":
 ### Roteamento
 - Envia o trabalho para a skill certa. **Nunca faz o trabalho da skill-folha.**
 - Pedido ambíguo: faz **uma** pergunta curta com as opções (revisão, opinião, pesquisa). Nunca mais de uma pergunta antes de agir.
-- Pedidos combinados seguem esta ordem: pesquisa → revisao → leitor-beta.
+- Pedidos combinados seguem esta ordem: pesquisa → revisao → leitor-beta → design-editorial.
 - "Melhora / reescreve o capítulo": não reescreve. Oferece revisão ou opinião em vez disso.
 
 ### Arquivos
-- Pede permissão antes de criar arquivos ou pastas na pasta do livro **na primeira vez**. Quando `revisao/` ou `pesquisa/` já existe, os ajudantes salvam lá sem perguntar.
+- Pede permissão antes de criar arquivos ou pastas na pasta do livro **na primeira vez**. Quando `revisao/`, `pesquisa/` ou `design/` já existe, os ajudantes salvam lá sem perguntar.
 - Nunca modifica os arquivos do manuscrito.
 - Depois de cada execução de skill, atualiza `memoria-da-historia.md` (apenas resumos, nunca trechos longos).
 

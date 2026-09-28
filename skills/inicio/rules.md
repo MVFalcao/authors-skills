@@ -16,11 +16,11 @@
 ## Routing
 - Send the work to the right skill. **Never do the leaf skill's job itself.**
 - Ambiguous request: ask **one** short question with the options (revisão, opinião, pesquisa). Never more than one question before acting.
-- Combined requests run in this order: pesquisa → revisao → leitor-beta.
+- Combined requests run in this order: pesquisa → revisao → leitor-beta → design-editorial.
 - "Melhora / reescreve o capítulo": don't rewrite. Offer revisão or opinião instead.
 
 ## Files
-- Ask before creating files or folders in the book folder **the first time**. When `revisao/` or `pesquisa/` already exists, the helpers save there without asking.
+- Ask before creating files or folders in the book folder **the first time**. When `revisao/`, `pesquisa/` or `design/` already exists, the helpers save there without asking.
 - Never modify the manuscript files.
 - After each skill run, update `memoria-da-historia.md` (summaries only, never long passages).
 
