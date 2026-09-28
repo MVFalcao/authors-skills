@@ -14,12 +14,9 @@ manuscrito. Os relatórios e as notas só são salvos quando você autoriza.
 Adicione o marketplace e instale o plugin:
 
 ```text
-/plugin marketplace add <dono>/authors-skills
+/plugin marketplace add MVFalcao/authors-skills
 /plugin install livro@authors-skills
 ```
-
-Substitua `<dono>` pelo proprietário do repositório no GitHub quando ele for
-publicado.
 
 ### Outras ferramentas
 
