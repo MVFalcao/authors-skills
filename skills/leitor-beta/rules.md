@@ -41,6 +41,7 @@ The persona changes **how** the opinion is delivered, never **what** is true abo
 - Supported formats: `.docx`, `.odt`, `.txt`, read with the `inicio` skill's `scripts/extract_text.py`. For other formats, ask the writer to save the chapter as `.docx`.
 
 ## Saving
+- Check whether `revisao/` exists by listing the book folder itself (for example `ls`). A file search misses an empty folder.
 - If `revisao/` already exists in the book folder, save the result there without asking, and give the file path in the reply.
 - If `revisao/` doesn't exist, ask once before creating it. If the writer says no, return the result in the chat.
 - Never overwrite an earlier result: if the file name is taken, add `-2`, `-3`, and so on.

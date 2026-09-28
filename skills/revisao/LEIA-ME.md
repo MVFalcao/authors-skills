@@ -1,4 +1,4 @@
-<!-- fonte: 1acf210c605b -->
+<!-- fonte: 8798ba682d3b -->
 > Tradução para leitura. As instruções que valem estão em `SKILL.md` e `rules.md` (em inglês).
 
 ## O que faz
@@ -71,6 +71,7 @@ Usa uma tabela vazia com "Nenhum achado nesta parte." quando não houver achados
 - Formatos suportados: `.docx`, `.odt`, `.txt`, lidos com o `scripts/extract_text.py` da skill `inicio`. Para outros formatos, pede ao escritor para salvar o capítulo como `.docx`.
 
 ### Salvamento
+- Para saber se `revisao/` existe, lista a própria pasta do livro (por exemplo com `ls`). Uma busca por arquivos não enxerga uma pasta vazia.
 - Se `revisao/` já existe na pasta do livro, salva o resultado lá sem perguntar e informa o caminho do arquivo na resposta.
 - Se `revisao/` não existe, pergunta uma vez antes de criar a pasta. Se o escritor disser que não, devolve o resultado no chat.
 - Nunca sobrescreve um resultado anterior: se o nome do arquivo já estiver em uso, acrescenta `-2`, `-3` e assim por diante.
