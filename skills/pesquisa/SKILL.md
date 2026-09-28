@@ -54,9 +54,9 @@ Follow this workflow and keep every writer-facing reply in PT-BR.
    `Clima`, `História`, `Cotidiano`, and `Detalhes sensoriais`. For a names
    request, always use `pesquisa/nomes-<assunto>.md`; replace spaces in
    `<assunto>` with hyphens and keep the subject concise. For other request
-   types, use the naming convention selected for that request. If the
-   workspace permits a note and the writer has authorized it, save it under
-   `pesquisa/`; otherwise return it in chat. Never modify the manuscript.
+   types, use the naming convention selected for that request. Save the
+   note under `pesquisa/` following the saving rules in `rules.md`; if the
+   workspace can't write files, return it in chat. Never modify the manuscript.
 7. End with a `Fontes` section, open questions, and proposed memory updates.
    Ensure the note follows the source and option requirements loaded from
    `rules.md`.

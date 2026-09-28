@@ -1,4 +1,4 @@
-<!-- fonte: 5807af0ac145 -->
+<!-- fonte: 8cd39c8df160 -->
 > Tradução para leitura. As instruções que valem estão em `SKILL.md` e `rules.md` (em inglês).
 
 ## O que faz
@@ -76,7 +76,7 @@ Um exemplo de pedido coordenado é "pesquise o cenário e depois avalie a cena":
 - "Melhora / reescreve o capítulo": não reescreve. Oferece revisão ou opinião em vez disso.
 
 ### Arquivos
-- Pede permissão antes de criar arquivos ou pastas na pasta do livro **na primeira vez**. Depois disso, escreve em `revisao/` e `pesquisa/` sem perguntar de novo.
+- Pede permissão antes de criar arquivos ou pastas na pasta do livro **na primeira vez**. Quando `revisao/` ou `pesquisa/` já existe, os ajudantes salvam lá sem perguntar.
 - Nunca modifica os arquivos do manuscrito.
 - Depois de cada execução de skill, atualiza `memoria-da-historia.md` (apenas resumos, nunca trechos longos).
 

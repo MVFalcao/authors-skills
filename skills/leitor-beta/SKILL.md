@@ -55,8 +55,8 @@ Follow this workflow and keep every writer-facing reply in PT-BR.
 5. Structure the assessment with the sections and measures required by
    `rules.md`, without rewriting the prose. Refer grammar work to
    revisao.
-6. If the workspace permits report files and the writer has authorized them,
-   save the report as `revisao/<capitulo>-leitura-beta.md`; otherwise return it
+6. Save the report as `revisao/<capitulo>-leitura-beta.md` following the
+   saving rules in `rules.md`; if the workspace can't write files, return it
    in chat. Never alter the manuscript. Include any proposed memory update,
    but do not apply it.
 7. When `todas` is requested, reuse the same evidence in the requested persona

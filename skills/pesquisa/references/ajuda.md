@@ -17,9 +17,11 @@ trecho; uma pesquisa comum não precisa de manuscrito.
 ```text
 /livro:pesquisa sugira nomes para uma estação ferroviária fictícia
 /livro:pesquisa como era o transporte fluvial no interior do Brasil em 1930?
-/livro:pesquisa /rascunhos/cena-do-porto.txt confira detalhes náuticos
+/livro:pesquisa manuscrito/cena-do-porto.txt confira detalhes náuticos
 /livro:pesquisa ajuda
 ```
+
+Se as skills foram instaladas com `scripts/install.sh` (sem o plugin), use o comando sem o prefixo `livro:`, por exemplo `/pesquisa`.
 
 Também funciona pedir em linguagem natural, como “pesquise nomes para uma
 cooperativa de montanha”.

@@ -20,9 +20,11 @@ linguagem natural, sem usar o comando.
 ```text
 /livro:inicio
 /livro:inicio prepare meu projeto de romance histórico
-/livro:inicio revise e depois avalie /rascunhos/cena-ponte.docx
-/livro:inicio pesquise o cenário e depois leia a cena /rascunhos/cena-ponte.txt
+/livro:inicio revise e depois avalie manuscrito/cena-ponte.docx
+/livro:inicio pesquise o cenário e depois leia a cena manuscrito/cena-ponte.txt
 ```
+
+Se as skills foram instaladas com `scripts/install.sh` (sem o plugin), use o comando sem o prefixo `livro:`, por exemplo `/inicio`.
 
 Também funcionam pedidos em linguagem natural, como “revise o capítulo e depois
 me diga se a cena prende”.

@@ -39,3 +39,8 @@ The persona changes **how** the opinion is delivered, never **what** is true abo
 ## Manuscript files
 - Read only the file the writer names, or text they paste. If neither is given, ask for the file name. Never guess which file a chapter is.
 - Supported formats: `.docx`, `.odt`, `.txt`, read with the `inicio` skill's `scripts/extract_text.py`. For other formats, ask the writer to save the chapter as `.docx`.
+
+## Saving
+- If `revisao/` already exists in the book folder, save the result there without asking, and give the file path in the reply.
+- If `revisao/` doesn't exist, ask once before creating it. If the writer says no, return the result in the chat.
+- Never overwrite an earlier result: if the file name is taken, add `-2`, `-3`, and so on.

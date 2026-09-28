@@ -14,11 +14,13 @@ avalia ritmo nem recepção de leitor. Cada achado recebe uma das gravidades:
 ## Exemplos
 
 ```text
-/livro:revisao /rascunhos/cena-ponte.docx
-/livro:revisao /rascunhos/dialogo.txt verifique pontuação e travessões
-/livro:revisao /rascunhos/capitulo-7.odt confira concordância verbal
+/livro:revisao manuscrito/cena-ponte.docx
+/livro:revisao manuscrito/dialogo.txt verifique pontuação e travessões
+/livro:revisao manuscrito/capitulo-7.odt confira concordância verbal
 /livro:revisao ajuda
 ```
+
+Se as skills foram instaladas com `scripts/install.sh` (sem o plugin), use o comando sem o prefixo `livro:`, por exemplo `/revisao`.
 
 Também funciona dizer, por exemplo, “confira a crase deste trecho”, sem usar o
 comando. A revisão nunca reescreve o texto sem que isso seja pedido.

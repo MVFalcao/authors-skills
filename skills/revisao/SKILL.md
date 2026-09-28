@@ -46,12 +46,12 @@ Follow this workflow and keep every writer-facing reply in PT-BR.
 4. Classify actionable findings with the categories and change policy from
    `rules.md`, preserving the author's voice and approved decisions. Keep the
    report limited to this skill's subject.
-5. Return the report in the PT-BR shape below. If the workspace permits report
-   files and the writer has authorized them, save it as
-   `revisao/<capitulo>-gramatica.md`; otherwise return the complete report in
-   chat. Never overwrite the manuscript. If a corrected version is requested,
-   save it separately as `revisao/<capitulo>-corrigido.md` only after the same
-   authorization, and leave approved dialect unchanged.
+5. Return the report in the PT-BR shape below. Save it as
+   `revisao/<capitulo>-gramatica.md` following the saving rules in
+   `rules.md`; if the workspace can't write files, return the complete report
+   in chat. Never overwrite the manuscript. If a corrected version is
+   requested, save it separately as `revisao/<capitulo>-corrigido.md` under
+   the same rules, and leave approved dialect unchanged.
 6. End with coverage, skipped author decisions, and proposed memory updates.
    Mark an uncertain interpretation `⚠️ verificar` instead of presenting it as
    fact.

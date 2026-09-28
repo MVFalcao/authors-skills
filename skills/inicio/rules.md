@@ -20,7 +20,7 @@
 - "Melhora / reescreve o capítulo": don't rewrite. Offer revisão or opinião instead.
 
 ## Files
-- Ask before creating files or folders in the book folder **the first time**. After that, write to `revisao/` and `pesquisa/` without asking again.
+- Ask before creating files or folders in the book folder **the first time**. When `revisao/` or `pesquisa/` already exists, the helpers save there without asking.
 - Never modify the manuscript files.
 - After each skill run, update `memoria-da-historia.md` (summaries only, never long passages).
 
