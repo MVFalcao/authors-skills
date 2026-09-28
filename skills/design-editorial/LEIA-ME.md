@@ -1,4 +1,4 @@
-<!-- fonte: 9de31c6bf37f -->
+<!-- fonte: 8e23956825b3 -->
 > Tradução para leitura. As instruções que valem estão em `SKILL.md` e `rules.md` (em inglês).
 
 ## O que faz
@@ -28,7 +28,7 @@ Não use para revisar o texto (isso é a revisao), opinar sobre a história (iss
    - **produção gráfica**: papel, método de impressão, cores, encadernação, acabamentos, arquivos para impressão, pedido de orçamento, checklist da prova;
    - **cálculo**: um número só (palavras, páginas, lombada, capa aberta).
    Para vários modos, responde na ordem projeto gráfico → diagramação → produção gráfica, um documento por modo. Escreve só os modos que o escritor pediu; oferece os outros em uma linha no final, em vez de escrevê-los. Um pedido para desenhar, ilustrar ou fazer um esboço da capa (ou de qualquer outra imagem) está fora do escopo: nunca cria imagem, SVG, HTML ou outro arquivo visual, nem como rascunho. Diz isso em uma linha e oferece a especificação técnica da capa (tamanho aberto, lombada, sangria, o que entregar ao ilustrador).
-4. Reúne os dados que o modo precisa: impresso, ebook ou os dois; formato; número de palavras; número de capítulos; imagens ou cor; tiragem; o que pesa mais (custo, durabilidade, acabamento especial). Se um dado ausente mudar a resposta de forma relevante, faz uma pergunta curta. Se não, usa os padrões de `rules.md` e lista esses padrões em "Premissas".
+4. Reúne os dados que o modo precisa: impresso, ebook ou os dois; formato; número de palavras; número de capítulos; imagens ou cor; tiragem; o que pesa mais (custo, durabilidade, acabamento especial). Se um dado ausente mudar a resposta de forma relevante, faz uma pergunta curta. Se não, usa os padrões de `rules.md` e lista esses padrões em "Premissas". Cada resposta faz no máximo uma pergunta, sobre um único dado, incluindo as perguntas de acompanhamento no final: escolhe o dado que mais pesa e deixa as "Premissas" cobrirem o resto. Ofertas de mais trabalho são afirmações ("Posso montar…"), nunca perguntas.
 5. Contagem de palavras. Usa o número que o escritor der. Se não houver, conta só os arquivos que o escritor nomear explicitamente (ou todos os arquivos de `manuscrito/` quando o escritor pedir explicitamente o livro inteiro) com `scripts/calc_producao.py palavras <arquivo> ...`, que usa o extrator compartilhado. Contar palavras é o único uso dos arquivos do manuscrito aqui: não lê, não resume e não cita o conteúdo dos capítulos, e nunca os modifica. Sem contagem, pula a estimativa de páginas e diz o que falta.
 6. Calcula todos os números com `scripts/calc_producao.py` (`mancha`, `paginas`, `lombada`, `capa`), nunca de cabeça, e mostra ao lado de cada resultado os dados usados. Passa para `paginas` os mesmos números de páginas pré e pós-textuais listados no documento (`--pre-textuais`, `--pos-textuais`). Os caminhos são relativos à pasta desta própria skill. Se o script não puder rodar, dá a fórmula e marca o resultado com `⚠️ verificar`.
 7. Escreve a especificação com o modelo correspondente abaixo. Explica cada escolha em uma linha (por que este formato, esta fonte, este papel). Marca tudo o que depende de um fornecedor ou de uma licença com `⚠️ verificar com a gráfica` ou `⚠️ verificar licença`. Nunca inventa preços, estoque de papel de uma gráfica específica nem os termos de licença de uma fonte.
@@ -75,6 +75,7 @@ Um exemplo de pedido é "quero imprimir 300 exemplares do meu romance de 70 mil 
 - Sempre recomenda uma prova física antes da tiragem completa.
 
 ### Limites
+- Faz no máximo uma pergunta por resposta, sobre um único dado, incluindo as perguntas de acompanhamento no final. Cobre os outros dados que faltam com os padrões em "Premissas". Oferece mais trabalho como afirmação ("Posso montar…"), não como pergunta.
 - Só especificações: não produz arquivos de diagramação, arte de capa nem ilustrações. Nunca cria imagem, SVG ou esboço em HTML, mesmo quando pedem uma capa; oferece a especificação técnica da capa.
 - Escreve só os documentos dos modos que o escritor pediu; oferece os outros modos em uma linha.
 - Não edita nem reescreve o manuscrito. Não comenta a história; isso é o leitor-beta.

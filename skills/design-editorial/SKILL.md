@@ -62,7 +62,10 @@ not produce InDesign, Affinity, Word or EPUB files.
    count; chapter count; images or colour; print run; what matters most (cost,
    durability, a premium look). If a missing input would change the answer
    materially, ask one short question. Otherwise use the defaults in
-   `rules.md` and list them under `Premissas`.
+   `rules.md` and list them under `Premissas`. Every reply asks at most one
+   question, about one input, including the follow-ups at the end: pick the
+   input that matters most and let `Premissas` cover the rest. Offers of
+   further work are statements ("Posso montar…"), never questions.
 5. Word count. Use a number the writer gives. Otherwise count only files the
    writer names explicitly (or all files in `manuscrito/` when the writer
    explicitly asks for the whole book) with
