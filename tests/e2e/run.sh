@@ -7,7 +7,7 @@
 #
 # Usage: sh tests/e2e/run.sh [output-dir]
 # Prints one line per case: exit code and the files saved in revisao/ and
-# pesquisa/. Full replies are in <output-dir>/out-<case>.md.
+# pesquisa/ and design/. Full replies are in <output-dir>/out-<case>.md.
 set -eu
 
 REPO=$(cd "$(dirname "$0")/../.." && pwd)
@@ -20,7 +20,7 @@ BOOK="$OUT/livro"
 rm -rf "$BOOK"
 cp -r "$REPO/tests/fixtures/livro-exemplo" "$BOOK"
 # An initialised book: the report folders exist but are still empty.
-mkdir -p "$BOOK/revisao" "$BOOK/pesquisa"
+mkdir -p "$BOOK/revisao" "$BOOK/pesquisa" "$BOOK/design"
 sh "$REPO/scripts/install.sh" --force "$BOOK" >/dev/null
 
 run_case() {
@@ -34,10 +34,10 @@ run_case() {
         --allowedTools "Read" "Write" "Edit" "Glob" "Grep" "Skill" \
         "WebSearch" "WebFetch" "Bash(python3:*)" "Bash(ls:*)" \
         >"$OUT/out-$name.md" 2>"$OUT/err-$name.txt") || status=$?
-    saved=$(cd "$dir" && find revisao pesquisa -type f 2>/dev/null | tr '\n' ' ')
+    saved=$(cd "$dir" && find revisao pesquisa design -type f 2>/dev/null | tr '\n' ' ')
     # Cases that must save a file vs cases that must not create any.
     case "$name" in
-        revisao|leitor|pesquisa) want=file ;;
+        revisao|leitor|pesquisa|design) want=file ;;
         *) want=none ;;
     esac
     verdict=PASS
@@ -53,6 +53,8 @@ run_case pesquisa "preciso de nomes para moradores de uma vila de pescadores no 
 run_case ambiguo "me ajuda com o capitulo-02.odt" &
 run_case ajuda "/leitor-beta" &
 run_case semarquivo "revisa o capítulo 1" &
+run_case design "monta o projeto gráfico do livro impresso: romance de 60 mil palavras em 20 capítulos" &
+run_case calculo "quantas páginas e qual a lombada se o livro tem 60 mil palavras, em 14x21 e pólen 80?" &
 wait
 echo "e2e: outputs in $OUT"
 # Only file effects are checked here; read out-<case>.md against the evals

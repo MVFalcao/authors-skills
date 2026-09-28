@@ -4,8 +4,8 @@
 
 ## 1. O que é
 
-Este projeto reúne quatro ajudantes para escrever um livro em português: início,
-revisão, leitor-beta e pesquisa. Eles leem o contexto da pasta do livro e o
+Este projeto reúne cinco ajudantes para escrever um livro em português: início,
+revisão, leitor-beta, pesquisa e design editorial. Eles leem o contexto da pasta do livro e o
 arquivo que você indicar, quando necessário. Nunca alteram o arquivo do
 manuscrito. Os relatórios e as notas só são salvos quando você autoriza.
 
@@ -50,6 +50,7 @@ esse backup.
 | `/livro:revisao` | Procura problemas de português, ortografia, gramática e pontuação. | `/livro:revisao manuscrito/capitulo-dois.txt confira a concordância` |
 | `/livro:leitor-beta` | Avalia gancho, ritmo, personagens, diálogos, clareza e impacto como leitor. | `/livro:leitor-beta manuscrito/cena-da-estacao.odt crítico leitor casual` |
 | `/livro:pesquisa` | Pesquisa nomes, lugares, épocas, profissões, detalhes técnicos e livros de referência. | `/livro:pesquisa sugira nomes para uma biblioteca fictícia de bairro` |
+| `/livro:design-editorial` | Planeja o projeto gráfico (formato, margens, tipografia), a diagramação do impresso e do ebook e a produção gráfica (papel, acabamento, gráfica). | `/livro:design-editorial projeto gráfico para um romance de 70 mil palavras em 14x21` |
 
 Quando você chama um comando sem tarefa, ele mostra a ajuda correspondente.
 Também funcionam pedidos em linguagem natural, como “confira a pontuação da
@@ -57,7 +58,8 @@ cena” ou “me diga onde minha atenção caiu”.
 
 Use `/livro:inicio` quando quiser combinar etapas; um pedido de uma coisa só
 vai para o ajudante correspondente. A revisão cuida do português, o leitor-beta
-da experiência de leitura e a pesquisa do contexto verificável.
+da experiência de leitura, a pesquisa do contexto verificável e o design
+editorial da forma do livro impresso e digital.
 
 ## 4. Formatos do manuscrito
 
@@ -87,13 +89,15 @@ primeira configuração para `/livro:inicio`:
 ├── memoria-da-historia.md
 ├── manuscrito/
 ├── revisao/
-└── pesquisa/
+├── pesquisa/
+└── design/
 ```
 
 `projeto-livro.md` guarda o contexto do projeto. `memoria-da-historia.md`
 mantém resumos, personagens, lugares, linha do tempo, fios em aberto e
 decisões do autor. Os capítulos ficam em `manuscrito/`, os relatórios em
-`revisao/` e as notas de pesquisa em `pesquisa/`.
+`revisao/`, as notas de pesquisa em `pesquisa/` e as especificações de design
+em `design/`.
 
 O ajudante lê a memória antes de abrir um capítulo quando ela existe. Ele lê o
 capítulo inteiro somente quando a tarefa precisa dele e nunca altera esse
@@ -125,14 +129,14 @@ O instalador coloca as skills no diretório correspondente: `.claude/skills`,
 `.opencode/skills` ou `.github/skills`. Na instalação global, usa os diretórios
 globais correspondentes; para OpenCode, usa `~/.config/opencode/skills`.
 
-No Codex (CLI 0.158.0), foi verificado que as quatro skills são encontradas
+No Codex (CLI 0.158.0), foi verificado que as cinco skills são encontradas
 com `--target codex`, `--target agents` e `--target codex --global`. As tarefas
 em si ainda não foram testadas no Codex.
 
 ## 8. Para quem mantém o repositório
 
 As regras de contribuição e o layout estão em `AGENTS.md`. O validador é
-`python3 scripts/validate_skills.py`; ele verifica as quatro skills. Os testes
+`python3 scripts/validate_skills.py`; ele verifica as cinco skills. Os testes
 ficam em `tests/`: rode `python3 -m unittest discover tests` e, para o teste de
 ponta a ponta com o Claude Code, `sh tests/e2e/run.sh`.
 
@@ -142,8 +146,9 @@ ponta a ponta com o Claude Code, `sh tests/e2e/run.sh`.
 
 ## 1. What it is
 
-This project bundles four helpers for writing a book in Portuguese: inicio,
-revisao (grammar review), leitor-beta (beta reader) and pesquisa (research).
+This project bundles five helpers for writing a book in Portuguese: inicio,
+revisao (grammar review), leitor-beta (beta reader), pesquisa (research) and
+design-editorial (editorial design).
 They read the context in the book folder and, when needed, the file you name.
 They never change the manuscript file. Reports and notes are only saved with
 your permission.
@@ -192,13 +197,15 @@ backup.
 | `/livro:revisao` | Looks for Portuguese spelling, grammar and punctuation problems. | `/livro:revisao manuscrito/capitulo-dois.txt confira a concordância` |
 | `/livro:leitor-beta` | Reacts as a reader: hook, pacing, characters, dialogue, clarity and impact. | `/livro:leitor-beta manuscrito/cena-da-estacao.odt crítico leitor casual` |
 | `/livro:pesquisa` | Researches names, places, eras, professions, technical details and reference books. | `/livro:pesquisa sugira nomes para uma biblioteca fictícia de bairro` |
+| `/livro:design-editorial` | Plans the book design (format, margins, typography), the print and ebook layout, and print production (paper, finishes, print shop). | `/livro:design-editorial projeto gráfico para um romance de 70 mil palavras em 14x21` |
 
 A command with no task shows its help. Plain requests work too, such as
 “confira a pontuação da cena” or “me diga onde minha atenção caiu”.
 
 Use `/livro:inicio` when you want to combine steps; a request for one thing
 goes straight to the matching helper. Revisao handles the Portuguese,
-leitor-beta the reading experience, and pesquisa the verifiable context.
+leitor-beta the reading experience, pesquisa the verifiable context, and
+design-editorial the shape of the printed and digital book.
 
 ## 4. Manuscript formats
 
@@ -227,13 +234,14 @@ before creating the structure. The other helpers send that first setup to
 ├── memoria-da-historia.md
 ├── manuscrito/
 ├── revisao/
-└── pesquisa/
+├── pesquisa/
+└── design/
 ```
 
 `projeto-livro.md` holds the project context. `memoria-da-historia.md` keeps
 summaries, characters, places, the timeline, open threads and the author's
-decisions. Chapters go in `manuscrito/`, reports in `revisao/` and research
-notes in `pesquisa/`.
+decisions. Chapters go in `manuscrito/`, reports in `revisao/`, research
+notes in `pesquisa/` and design specs in `design/`.
 
 When the memory file exists, the helper reads it before opening a chapter. It
 reads a whole chapter only when the task needs it and never changes that file.
@@ -264,13 +272,13 @@ The installer puts the skills in the matching directory: `.claude/skills`,
 `.opencode/skills` or `.github/skills`. A global install uses the matching
 global directories; for OpenCode it uses `~/.config/opencode/skills`.
 
-In Codex (CLI 0.158.0), all four skills were confirmed to be discovered with
+In Codex (CLI 0.158.0), all five skills were confirmed to be discovered with
 `--target codex`, `--target agents` and `--target codex --global`. The tasks
 themselves have not been tested in Codex yet.
 
 ## 8. For maintainers
 
 Contribution rules and the layout are in `AGENTS.md`. The validator is
-`python3 scripts/validate_skills.py`; it checks all four skills. Tests live in
+`python3 scripts/validate_skills.py`; it checks all five skills. Tests live in
 `tests/`: run `python3 -m unittest discover tests` and, for the end-to-end test
 with Claude Code, `sh tests/e2e/run.sh`.

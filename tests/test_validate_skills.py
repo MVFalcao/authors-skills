@@ -102,7 +102,7 @@ class ValidateSkillTest(unittest.TestCase):
 
 
 class RepoSkillsTest(unittest.TestCase):
-    EXPECTED = {"revisao", "leitor-beta", "pesquisa", "inicio"}
+    EXPECTED = {"revisao", "leitor-beta", "pesquisa", "inicio", "design-editorial"}
 
     def test_all_writer_skills_exist_and_are_valid(self):
         results = validate_all(ROOT / "skills")
@@ -123,7 +123,7 @@ class RepoSkillsTest(unittest.TestCase):
 
 
 class PluginPackagingTest(unittest.TestCase):
-    SKILLS = ("inicio", "revisao", "leitor-beta", "pesquisa")
+    SKILLS = ("inicio", "revisao", "leitor-beta", "pesquisa", "design-editorial")
 
     def test_plugin_manifest(self):
         import json
